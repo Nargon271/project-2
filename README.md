@@ -6,7 +6,6 @@
 ## Introduction
 
 
-![farm pic](https://unsplash.com/photos/IQVFVH0ajag)
 
 Here's the route we will be using:
 
