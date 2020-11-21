@@ -1,26 +1,11 @@
 <div class="container">
     <h1 class="text-center mb-5">Sign up</h1>
-    <div class="row justify-content-between mt-5">
+    <div class="row justify-content-center mt-5">
 
-        <div class="col-md-5 ">
-            <h2>Are you a farmer?</h2>
+        <div class="col-md-5">
+
 
             <form method="POST" action="/sign-up">
-
-                <div class="form-group">
-                    <label>Farm Name</label>
-                    <input type="text" class="form-control" name="farmname">
-                </div>
-
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email">
-                </div>
-
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password">
-                </div>
 
                 <div class="form-group">
                     <label>Name</label>
@@ -31,35 +16,6 @@
                     <label>Surname</label>
                     <input type="text" class="form-control" name="surName">
                 </div>
-
-                <div class="form-group">
-                    <label for="description-input">Description</label>
-                    <textarea name="description" class="form-control" id="description-input" rows="3"></textarea>
-                </div>
-
-                <div class='form-group'>
-                    <div class="custom-file">
-                        <input name="profileImg" type="file" class="custom-file-input" id="profileImg">
-                        <label class="custom-file-label" for="profileImg">Select image</label>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-dark btn-block">Sign up</button>
-
-                {{#if errorMsg}}
-                <div style="background: red; color: white; text-align: center; padding: 10px; margin-top:10px">
-                    {{errorMsg}}</div>
-                {{/if}}
-
-            </form>
-        </div>
-
-
-        <div class="col-md-5">
-
-            <h2>Are you a buyer?</h2>
-
-            <form method="POST" action="/sign-up">
 
                 <div class="form-group">
                     <label>Username</label>
@@ -77,20 +33,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name">
-                </div>
-
-                <div class="form-group">
-                    <label>Surname</label>
-                    <input type="text" class="form-control" name="surName">
-                </div>
-
-                <div class='form-group'>
-                    <div class="custom-file">
-                        <input name="profileImg" type="file" class="custom-file-input" id="profileImg">
-                        <label class="custom-file-label" for="profileImg">Select image</label>
-                    </div>
+                    <label for="user-list">Are you a :</label>
+                    <select name="user" class="form-control" id="user-list">
+                        <option>Seleccionar</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="buyer">Buyer</option>
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-dark btn-block">Sign up</button>

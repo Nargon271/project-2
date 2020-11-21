@@ -3,12 +3,29 @@ body {
   font-family: sans-serif; 
 }
 .navbar{
+
   margin-bottom: 60px;
+
 }
 
 textarea{
   resize:none;
+
 }
 
-/*# sourceMappingURL=style.css.map */
+img{
+  width:100%
+}
+
+.img-farm-card{
+  height: 250px;
+  object-fit: cover;
+}
+
+.img-farm-detail{
+  height: 500px;
+  object-fit: cover;
+}
+
+
 

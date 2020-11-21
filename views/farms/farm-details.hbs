@@ -2,16 +2,17 @@
 
     <h1>{{name}}</h1>
     <figure>
-        <img src="{{profileImg}}" alt="{{farmname}}">
+        <img class="img-farm-detail" src="{{profileImg}}" alt="{{farmname}}">
     </figure>
-    <h4>Description</h4>
+    <h4 class="mt-5">Description</h4>
     <p>{{description}}</p>
     <p><strong>The Owner: </strong> {{name}} {{surName}} </p>
-
+    <p><strong>Latitude:</strong> {{location.coordinates.[0]}}</p>
+    <p><strong>Longitude:</strong> {{location.coordinates.[1]}}</p>
 
     {{!-- <a href="/farms/{{id}}" class="btn btn-dark">Read more </a> --}}
 
 
-    <a href="/products" class="btn btn-dark">Go back </a>
+    <a href="/farms" class="btn btn-dark mt-5">Go back </a>
 
 </div>

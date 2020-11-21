@@ -5,4 +5,5 @@ module.exports = app => {
     app.use('/products', require('./products.routes.js'))
     app.use('/farms', require('./farms.routes.js'))
     app.use('/auth', require('./auth.routes.js'))
+    app.use('/profile', require('./profile.routes.js'))
 }
