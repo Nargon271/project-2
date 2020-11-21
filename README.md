@@ -6,7 +6,7 @@ App to connect farmers to buyers directly
 
 ## Introduction
 
-This app connects farmers directly to the local consumer market. This will give independent farmers and cooperatives ability to sell their farm produce easily and as well enable buyers to contact farmers easily.
+This app connects farmers directly to the local consumer market. This will give independent farmers and cooperatives ability to sell their farm produce easily and as well enable buyers to contact farmers directly.
 
 Here's the route we will be using:
 
