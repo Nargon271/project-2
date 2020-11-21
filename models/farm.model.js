@@ -7,7 +7,7 @@ const farmSchema = new Schema({
         required: true,
         default: 'Desconocido'
     },
-    surName: {
+    surname: {
         type: String,
         required: true,
         default: 'Desconicido'
