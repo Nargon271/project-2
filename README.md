@@ -10,10 +10,10 @@ This app connects farmers directly to the local consumer market. This will give 
 Farmers can post their products and attract more buyers which will save precious time and money. They can get better profits than normal. As these portals reduce middleman buyers and sellers can privately chat to negotiate prices safely.
 
 
-## 1. Product
+## 1. MARKET PLACE
 People can connect with each other to buy or sell in over 12 categories and 110 sub-categories.
 
-## 2.E-MAIL OR CALL
+## 2. E-MAIL OR CALL
 Seller or buyer can share details by e-mail and then discuss the deal on phone contact. Buyers can ask and post questions related to their farming practices.
 
 
