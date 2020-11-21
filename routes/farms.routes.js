@@ -7,7 +7,7 @@ const Farm = require('../models/farm.model')
 router.get('/', (req, res, next) => {
 
     Farm
-        .find()
+        .find({ role: 'FARMER' })
         .then(allFarms => res.render('farms/farms-list', { allFarms }))
         .catch(err => next(new Error(err)))
 })

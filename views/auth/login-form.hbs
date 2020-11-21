@@ -2,14 +2,14 @@
 
     <div class="row justify-content-center">
 
-        {{!-- <div class="col-md-5">
+        <div class="col-md-5">
 
-            <h2>Log in Buyer</h2>
+            <h2>Log in Farm</h2>
 
             <form method="POST" action="/auth/log-in">
 
                 <div class="form-group">
-                    <label>User</label>
+                    <label>Username</label>
                     <input type="text" class="form-control" name="username">
                 </div>
 
@@ -25,32 +25,6 @@
                     {{errorMsg}}</div>
                 {{/if}}
 
-            </form>
-        </div> --}}
-
-        <div class="col-md-5">
-        
-            <h2>Log in Farm</h2>
-        
-            <form method="POST" action="/auth/log-in">
-        
-                <div class="form-group">
-                    <label>Farm Name</label>
-                    <input type="text" class="form-control" name="username">
-                </div>
-        
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password">
-                </div>
-        
-                <button type="submit" class="btn btn-dark btn-block">Log in</button>
-        
-                {{!-- {{#if errorMsg}}
-                <div style="background: red; color: white; text-align: center; padding: 10px; margin-top:10px">
-                    {{errorMsg}}</div>
-                {{/if}} --}}
-        
             </form>
         </div>
     </div>
