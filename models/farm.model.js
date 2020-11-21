@@ -30,22 +30,21 @@ const farmSchema = new Schema({
         type: String,
         required: true,
     },
-    description: {
-        type: String,
-
-    },
+    description: String,
     role: {
         type: String,
         enum: ['BUYER', 'FARMER', 'ADMIN'],
         default: 'BUYER'
-    },  
+    },
     profileImg: String,
     location: {
         type: {
             type: String
         },
         coordinates: [Number]
-    }
+    },
+    address: String,
+
 }, { timestamps: true })
 
 farmSchema.index({ location: '2dsphere' })
