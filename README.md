@@ -17,7 +17,7 @@ People can connect with each other to buy or sell in over 12 categories and 110 
 Seller or buyer can share details by e-mail and then discuss the deal on phone contact. Buyers can ask and post questions related to their farming practices.
 
 
-## 3.POST AD/LISTING IN ONE MINUTE
+## 3. POST AD/LISTING IN ONE MINUTE
 It let end user to post anything related to Agriculture in one minute. Take a snap or upload a photo, just enter the details of the product, click Submit and instantly end user’s Ad will be displayed.
 
 
