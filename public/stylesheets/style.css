@@ -1,5 +1,11 @@
 body {
-  padding: 50px;
-  font-family: sans-serif; }
+  font-weight: 100;
+  font-family: sans-serif; 
+}
+.navbar{
+  margin-bottom: 60px;
+}
+
 
 /*# sourceMappingURL=style.css.map */
+
