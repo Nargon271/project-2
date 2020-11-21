@@ -2,6 +2,7 @@
 
 # Project 2
 
+App to connect farmers to buyers directly
 
 ## Introduction
 
