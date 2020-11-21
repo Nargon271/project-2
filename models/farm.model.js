@@ -14,6 +14,10 @@ const farmSchema = new Schema({
     },
     farmname: {
         type: String,
+        unique: true
+    },
+    username: {
+        type: String,
         required: true,
         unique: true
     },
@@ -31,6 +35,11 @@ const farmSchema = new Schema({
         required: true
 
     },
+    role: {
+        type: String,
+        enum: ['BUYER', 'FARMER', 'ADMIN'],
+        default: 'BUYER'
+    },  
     profileImg: String,
     location: {
         type: {
