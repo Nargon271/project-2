@@ -14,7 +14,8 @@ const farmSchema = new Schema({
     },
     farmname: {
         type: String,
-        unique: true
+        unique: true,
+        default: 'unknown'
     },
     username: {
         type: String,
@@ -30,20 +31,29 @@ const farmSchema = new Schema({
         type: String,
         required: true,
     },
-    description: String,
+    description: {
+        type: String,
+        default: 'unknown'
+    },
     role: {
         type: String,
         enum: ['BUYER', 'FARMER', 'ADMIN'],
         default: 'BUYER'
     },
-    profileImg: String,
+    profileImg: {
+        type: String,
+        default: 'unknown'
+    },
     location: {
         type: {
             type: String
         },
-        coordinates: [Number]
+        coordinates: [Number], 
     },
-    address: String,
+    address: {
+        type: String,
+        default: "unknown"
+    },
 
 }, { timestamps: true })
 

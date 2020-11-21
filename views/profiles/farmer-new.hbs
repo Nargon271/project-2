@@ -6,31 +6,47 @@
 
             <h2 class="mb-5">Create your farm page </h2>
 
-            <form class="mb-5" method="POST" action="/farmer/create-farm">
+            <form class="mb-5" method="POST" action="/profile/create-farm?id={{farmInfo.id}}">
 
                 <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" value="{{farmInfo.name}}">
+                </div>
+                <div class="form-group">
+                    <label>Surname</label>
+                    <input type="text" class="form-control" name="surname" value="{{farmInfo.surname}}">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" value="{{farmInfo.username}}">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" value="{{farmInfo.email}}">
+                </div>
+                <div class="form-group">
                     <label>Farm Name</label>
-                    <input type="text" class="form-control" name="farmname">
+                    <input type="text" class="form-control" name="farmname" value="{{farmInfo.farmname}}">
                 </div>
                 <div class="form-group">
                     <label for="description-input">Description</label>
-                    <textarea name="description" class="form-control" id="description-input" rows="3"></textarea>
+                    <textarea name="description" class="form-control" id="description-input" rows="3" >{{farmInfo.description}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="address-input">Address</label>
-                    <input name="address" type="text" class="form-control" id="address-input">
+                    <input name="address" type="text" class="form-control" id="address-input" value="{{farmInfo.address}}">
                 </div>
                 <div class="form-group">
                     <label for="latitude-input">Latitude</label>
-                    <input name="latitude" type="text" class="form-control" id="latitude-input">
+                    <input name="latitude" type="text" class="form-control" id="latitude-input" value="{{farmInfo.location.coordinates.[0]}}">
                 </div>
                 <div class="form-group">
                     <label for="longitude-input">Longitude</label>
-                    <input name="longitude" type="text" class="form-control" id="longitude-input">
+                    <input name="longitude" type="text" class="form-control" id="longitude-input" value="{{farmInfo.location.coordinates.[1]}}">
                 </div>
                 <div class='form-group'>
                     <div class="custom-file">
-                        <input name="profileImg" type="file" class="custom-file-input" id="profileImg">
+                        <input name="profileImg" type="file" class="custom-file-input" id="profileImg" value="{{farmInfo.profileImg}}">
                         <label class="custom-file-label" for="profileImg">Select image</label>
                     </div>
                 </div>
