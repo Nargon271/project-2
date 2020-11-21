@@ -1,46 +1,34 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const farmSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        default: 'Desconicido'
-    },
-    surName: {
-        type: String,
-        required: true,
-        default: 'Desconicido'
-    },
-    farmName: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true
-
-    },
-    location: {
-        type: {
-            type: String
+const userSchema = new Schema(
+    {
+        username: {
+            type: String,
+            required: true,
+            unique: true
         },
-        coordinates: [Number]
+        name: {
+            type: String,
+            required: true,
+            default: 'Desconicido'
+        },
+        surName: {
+            type: String,
+            required: true,
+            default: 'Desconicido'
+        },
+        password: {
+            type: String,
+            required: true
+        },
+        profileImg: String,
+    },
+    {
+        timestamps: true
     }
-}, { timestamps: true })
+);
 
-farmSchema.index({ location: '2dsphere' })
+const User = mongoose.model('User', userSchema);
 
-const Farm = mongoose.model('Farm', farmSchema)
-
-module.exports = Farm
+module.exports = User;
