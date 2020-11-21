@@ -18,7 +18,7 @@ const hashPass2 = bcrypt.hashSync(password2, salt)
 const farms = [
     {
         name: "Jose",
-        surName: "Coronado",
+        surname: "Coronado",
         farmname: "Riconatura",
         email: "josecorona2@gmail.com",
         username: "josele",
@@ -33,7 +33,7 @@ const farms = [
     },
     {
         name: "Jacinto",
-        surName: "Jeremias",
+        surname: "Jeremias",
         farmname: "Bodigo",
         email: "bodigogrande@gmail.com",
         username: "jacinto",
