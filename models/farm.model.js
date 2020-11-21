@@ -12,7 +12,7 @@ const farmSchema = new Schema({
         required: true,
         default: 'Desconicido'
     },
-    farmName: {
+    farmname: {
         type: String,
         required: true,
         unique: true
