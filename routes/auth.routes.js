@@ -3,7 +3,7 @@ const router = express.Router()
 const passport = require("passport")
 
 //models
-
+const Farm = require('../models/farm.model')
 
 
 //bricpt
@@ -23,8 +23,32 @@ router.post("/log-in", passport.authenticate("local", {
 //Sign up
 router.get('/sign-up', (req, res) => res.render('auth/signup-form'))
 
-router.post('sign-up', (req, res) => {
+router.post('/sign-up', (req, res) => {
+    const { name, surname, username, email, password, role } = req.body
     
+
+    if (username === "" || name === "" || password === "" || surname === "" || email === "" || role === "") {
+        res.render("auth/signup-form", { errorMsg: "Rellena todos los campos" })
+        return
+    }
+
+    Farm
+        .findOne({ username })
+        .then(user => {
+            if (user) {
+                res.render("auth/signup-form", { errorMsg: "El usuario ya existe" })
+                return
+            }
+
+            const salt = bcrypt.genSaltSync(bcryptSalt)
+            const hashPass = bcrypt.hashSync(password, salt)
+
+            Farm.create({ name, surname, username, email, password: hashPass, role })
+                .then(() => res.redirect('/'))
+                .catch(() => res.render("auth/signup-form", { errorMsg: "Hubo un error" }))
+        })
+        .catch(err => console.log(err))
 })
+
 
 module.exports = router

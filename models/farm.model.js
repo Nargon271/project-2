@@ -5,7 +5,7 @@ const farmSchema = new Schema({
     name: {
         type: String,
         required: true,
-        default: 'Desconicido'
+        default: 'Desconocido'
     },
     surName: {
         type: String,
@@ -32,7 +32,6 @@ const farmSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
 
     },
     role: {
