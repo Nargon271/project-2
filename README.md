@@ -26,11 +26,24 @@ Here's the route we will be using:
 
 |   Route   | HTTP Verb |   Description   |
 |-----------|-----------|-----------------|
-| `/` |    GET    |  |
-| `/` |    POST    |  |
-
-
-
+| `/` |    GET    | show index with Google Map |
+| `/api/farms` |    GET   | json farm list |
+| `/farms` |    GET   | show farms list |
+| `/farms/:farm_id`|    GET   | show farm details|
+| `/products` |    GET   | show products list |
+| `/products/:product_id`|    GET   | show product details|
+| `/auth/log-in` |    GET   | show log in form|
+| `/auth/log-in` |    POST   | manage log in form |
+| `/auth/sign-up` |    GET   | show sign up form|
+| `/auth/sign-up` |    POST   | manage sign up form |
+| `/profile` |    GET    | show user profile data |
+| `/profile/create-farm` |    GET    | show form to complete farm details|
+| `/profile/create-farm` |    POST   | manage form to complete farm details|
+| `/profile/:id/create-product` |    GET    | show create new product form|
+| `/profile/:id/create-product` |    POST   | manage create new product form|
+| `/profile/:id/edit-product?id=XXX` |    GET    | show edit product form|
+| `/profile/:id/edit-product?id=XXX` |    POST   | manage edit product form|
+| `/profile/:id/delete-product?id=XXX` |    GET    | delete product|
 
 
 

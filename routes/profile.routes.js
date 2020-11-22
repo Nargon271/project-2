@@ -10,11 +10,11 @@ const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(re
 
 router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
 
-    
+
     Product
         .find()
         .populate('Farm')
-        .then(allProducts => res.render('profiles/profile', { allProducts, user: req.user, isFarmer: req.user.role.includes('FARMER'), uncompleted: req.user.farmname.includes('unknown') }))
+        .then(allProducts => res.render('profiles/profile', { allProducts, user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER'), uncompleted: req.user.farmname.includes('unknown') }))
         .catch(err => console.log(err))
 })
 
@@ -48,34 +48,8 @@ router.post('/create-farm', (req, res) => {
 })
 
 
-//EDIT Product FORM (GET)
-router.get('/edit', (req, res, next) => {
 
-    const productId = req.query.id
-
-    Product
-        .findById(productId)
-        .then(productInfo => res.render('products/edit-product', productInfo))
-        .catch(err => next(new Error(err)))
-
-})
-
-//EDIT Product FORM (POST)
-router.post('/edit', (req, res, next) => {
-
-    const productId = req.query.id
-
-    const { name, description, productImg, price, stock, farm } = req.body
-
-    Product
-        .findByIdAndUpdate(productId, { name, description, productImg, price, stock, farm })
-        .then(() => res.redirect('/'))
-        .catch(err => next(new Error(err)))
-
-})
-
-
-
+//CREATE Product FORM (GET)
 router.get('/:id/create-product', (req, res) => {
     const farmId = req.params.id
 
@@ -88,14 +62,50 @@ router.get('/:id/create-product', (req, res) => {
         .catch(err => console.log('Error:', err))
 })
 
+//CREATE Product FORM (POST)
 router.post('/:id/create-product', (req, res, next) => {
     const { name, description, profileImg, price, stock, farm } = req.body
     const farmId = req.params.id
-    
+
     Product.create({ name, description, profileImg, price, stock, farm: farmId })
         .then(() => res.redirect('/profile'))
         .catch(err => console.log('Error:', err))
-    
+
+})
+
+
+//EDIT Product FORM(GET)
+router.get('/:id/edit-product', (req, res, next) => {
+    const farmId = req.params.farm_id
+    const productId = req.query.id
+
+    Product
+        .findById(productId)
+        .then(productInfo => res.render('products/edit-product', productInfo))
+        .catch(err => console.log('Error:', err))
+
+})
+
+
+//EDIT Product FORM (POST)
+router.post('/:id/edit-product', (req, res, next) => {
+    const farmId = req.params.id
+    const productId = req.query.id
+
+    const { name, description, productImg, price, stock } = req.body
+
+    Product
+        .findByIdAndUpdate(productId, { name, description, productImg, price, stock })
+        .then(() => res.redirect('/profile'))
+        .catch(err => console.log('Error:', err))
+
+})
+
+//DELETE Product FORM (GET)
+router.get('/:id/delete-product', (req, res, next) => {
+    Product.findByIdAndDelete(req.query.id)
+        .then(() => res.redirect('/profile'))
+        .catch(err => console.log('Error:', err))
 })
 
 
@@ -103,7 +113,7 @@ router.post('/:id/create-product', (req, res, next) => {
 // router.get('/:id', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
 
 //     const farmId = req.params.id
-    
+
 //     Promise.all([Farm.findById(farmId), Product.find().populate('Farm')])
 //         .then(data => {
 //             console.log(data)
