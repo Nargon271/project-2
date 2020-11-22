@@ -48,7 +48,7 @@ const farmSchema = new Schema({
         type: {
             type: String
         },
-        coordinates: [Number], 
+        coordinates: [Number]
     },
     address: {
         type: String,
