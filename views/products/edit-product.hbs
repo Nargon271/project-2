@@ -1,0 +1,57 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <h1>Edit Product</h1>
+        </div>
+
+        <div class="col-md-6">
+
+            <form action="edit/?id={{id}}" method="POST">
+                <div class="form-group">
+                    <label for="name-input">Name</label>
+                    <input name="name" type="text" class="form-control" id="name-input" value="{{productInfo.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="description-input">Description</label>
+                    <textarea name="description" class="form-control" id="description-input"
+                        rows="3">{{productInfo.description}}</textarea>
+                </div>
+
+                {{!-- IMG  --}}
+                <div class="form-group">
+                    <label for="description-input">Image</label>
+                    <img src="{{productInfo.profileImg}}" alt="{{productInfo.name}}">
+                </div>
+                <div class='form-group'>
+                    <div class="custom-file">
+                        <input name="profileImg" type="file" class="custom-file-input" id="profileImg"
+                            value="{{productInfo.profileImg}}">
+                        <label class="custom-file-label" for="profileImg">Select image</label>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="name-input">Price</label>
+                    <input name="price" type="text" class="form-control" id="name-input" value="{{productInfo.price}}">
+                </div>
+                <div class="form-group">
+                    <label for="name-input">Stock</label>
+                    <input name="stock" type="text" class="form-control" id="name-input" value="{{productInfo.stock}}">
+                </div>
+
+
+                {{!-- FARM where you can find it --}}
+
+
+
+                <button type="submit" class="btn btn-dark">Edit Product</button>
+                <a href="/profile" class="btn btn-dark">Go back</a>
+
+            </form>
+        </div>
+
+    </div>
+</div>

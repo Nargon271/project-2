@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Farm = require('../models/farm.model')
+const Product = require('../models/products.model')
 
 const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login-form', { errorMsg: 'You are not authorized, please log in' })
 const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(req.user.role) ? next() : res.render('auth/login-form', { errorMsg: 'Not authorized' })
@@ -9,7 +10,10 @@ const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(re
 
 router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => res.render('profiles/profile', { user: req.user, isFarmer: req.user.role.includes('FARMER'), uncompleted: req.user.farmname.includes('unknown') }))
 
-//Create Farm FORM
+
+
+
+//Create Farm FORM (GET)
 router.get('/create-farm', (req, res) => {
 
     const farmId = req.query.id
@@ -20,7 +24,7 @@ router.get('/create-farm', (req, res) => {
         .catch(err => console.log(err))
 
 })
-
+//Create Farm FORM (POST)
 router.post('/create-farm', (req, res) => {
 
     const farmId = req.query.id
@@ -37,19 +41,32 @@ router.post('/create-farm', (req, res) => {
         .catch(err => console.log(err))
 })
 
-router.post('/create-farm', (req, res, next) => {
 
-    const { farmname, description, address, latitude, longitude, profileImg } = req.body
 
-    const location = {
-        type: 'Point',
-        coordinates: [latitude, longitude]
-    }
+//EDIT Product FORM (GET)
+router.get('/edit', (req, res, next) => {
 
-    Farm
-        .create({ farmname, description, address, location, profileImg })
+    const productId = req.query.id
+
+    Product
+        .findById(productId)
+        .then(productInfo => res.render('products/edit-product', productInfo))
+        .catch(err => next(new Error(err)))
+
+})
+
+//EDIT Product FORM (POST)
+router.post('/edit', (req, res, next) => {
+
+    const productId = req.query.id
+
+    const { name, description, productImg, price, stock, farm } = req.body
+
+    Product
+        .findByIdAndUpdate(productId, { name, description, productImg, price, stock, farm })
         .then(() => res.redirect('/'))
         .catch(err => next(new Error(err)))
+
 })
 
 
