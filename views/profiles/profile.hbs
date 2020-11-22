@@ -1,8 +1,21 @@
+            <img src="{{user.profileImg}}" class="img-fluid" alt="Responsive image">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Welcome {{user.username}}!</h1>
-            <p>You are a {{user.role}}, you hace access to this page</p>
+            <hr>
+            <h2>Welcome {{user.username}}!</h2>
+            <hr>
+            <p>{{user.description}}</p>
+            <hr>
+            <p><strong>Role:</strong>{{user.role}}</p>
+            <p>Name: {{user.name}} {{user.surname}}</p>
+            <hr>
+            <h5>Contact info:</h5>
+            <p>{{user.email}}</p>
+            <p>{{user.address}}</p>
+            <hr>
+
+
             {{#if uncompleted}}
             <div class="alert alert-warning" role="alert">
                 Completa tu perfil
