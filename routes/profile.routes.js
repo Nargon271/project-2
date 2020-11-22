@@ -18,7 +18,7 @@ router.get('/create-farm', (req, res) => {
         .findById(farmId)
         .then(farmInfo => res.render('profiles/farmer-new', { farmInfo }))
         .catch(err => console.log(err))
-    
+
 })
 
 router.post('/create-farm', (req, res) => {
@@ -36,6 +36,30 @@ router.post('/create-farm', (req, res) => {
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
+
+router.post('/create-farm', (req, res, next) => {
+
+    const { farmname, description, address, latitude, longitude, profileImg } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
+
+    Farm
+        .create({ farmname, description, address, location, profileImg })
+        .then(() => res.redirect('/'))
+        .catch(err => next(new Error(err)))
+})
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router
