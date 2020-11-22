@@ -8,7 +8,7 @@
 
         <div class="col-md-6">
 
-            <form action="edit/?id={{id}}" method="POST">
+            <form action="/edit/?id={{id}}" method="POST">
                 <div class="form-group">
                     <label for="name-input">Name</label>
                     <input name="name" type="text" class="form-control" id="name-input" value="{{productInfo.name}}">
@@ -32,14 +32,15 @@
                     </div>
                 </div>
 
-
                 <div class="form-group">
-                    <label for="name-input">Price</label>
-                    <input name="price" type="text" class="form-control" id="name-input" value="{{productInfo.price}}">
+                    <label for="name-input">Price (€ euro/kg)</label>
+                    <input name="price" type="number" class="form-control" id="name-input"
+                        value="{{productInfo.price}}">
                 </div>
                 <div class="form-group">
                     <label for="name-input">Stock</label>
-                    <input name="stock" type="text" class="form-control" id="name-input" value="{{productInfo.stock}}">
+                    <input name="stock" type="number" class="form-control" id="name-input"
+                        value="{{productInfo.stock}}">
                 </div>
 
 

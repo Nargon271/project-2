@@ -8,12 +8,18 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(req.user.role) ? next() : res.render('auth/login-form', { errorMsg: 'Not authorized' })
 
 
-router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => res.render('profiles/profile', { user: req.user, isFarmer: req.user.role.includes('FARMER'), uncompleted: req.user.farmname.includes('unknown') }))
+router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
+    Product
+        .find()
+        .populate('Farm')
+        .then(allProducts => res.render('profiles/profile', { allProducts, user: req.user, isFarmer: req.user.role.includes('FARMER'), uncompleted: req.user.farmname.includes('unknown') }))
+        .catch(err => console.log(err))
+})
 
 
+//////////////////////////////////////////////////////////////
 
-
-//Create Farm FORM (GET)
+//Create/Edit Farm FORM (GET)
 router.get('/create-farm', (req, res) => {
 
     const farmId = req.query.id
@@ -24,7 +30,7 @@ router.get('/create-farm', (req, res) => {
         .catch(err => console.log(err))
 
 })
-//Create Farm FORM (POST)
+//Create/Edit Farm FORM (POST)
 router.post('/create-farm', (req, res) => {
 
     const farmId = req.query.id
@@ -41,6 +47,34 @@ router.post('/create-farm', (req, res) => {
         .catch(err => console.log(err))
 })
 
+//////////////////////////////////////////////////////////////
+
+
+
+//Create Product FORM (GET)
+router.get('/create-product', (req, res, next) => {
+    const farmId = req.query.id
+
+    Farm
+        .findById(farmId)
+        .then(allFarms => res.render('products/product-new', { allFarms }))
+        .catch(err => console.log(err))
+
+})
+
+
+//Create Product FORM (POST)
+router.post('/create-product', (req, res, next) => {
+    const { name, description, profileImg, price, stock, farm } = req.body
+
+    Product
+        .create({ name, description, profileImg, price, stock, farm_id: farm })
+        .then(() => res.redirect('/profile'))
+        .catch(err => next(new Error(err)))
+})
+
+
+//////////////////////////////////////////////////////////////
 
 
 //EDIT Product FORM (GET)
