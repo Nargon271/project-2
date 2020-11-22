@@ -48,6 +48,34 @@ router.post('/create-farm', (req, res) => {
 })
 
 
+//--------BUYER-----------//
+
+//Create/Edit BUYER FORM (GET)
+router.get('/edit-buyer', (req, res) => {
+
+    const farmId = req.query.id
+
+    Farm
+        .findById(farmId)
+        .then(farmInfo => res.render('profiles/buyer-edit', { farmInfo }))
+        .catch(err => console.log(err))
+
+})
+//Create/Edit BUYER FORM (POST)
+router.post('/edit-buyer', (req, res) => {
+
+    const farmId = req.query.id
+    const { name, surname, username, password, email, profileImg, address } = req.body
+
+
+    Farm
+        .findByIdAndUpdate(farmId, { name, surname, username, password, email, profileImg, address })
+        .then(() => res.redirect('/'))
+        .catch(err => console.log(err))
+})
+
+//-------------BUYER-------------//
+
 
 //CREATE Product FORM (GET)
 router.get('/:id/create-product', (req, res) => {
