@@ -14,7 +14,7 @@ router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (r
     Product
         .find()
         .populate('Farm')
-        .then(allProducts => res.render('profiles/profile', { allProducts, user: req.user, isFarmer: req.user.role.includes('FARMER'), uncompleted: req.user.farmname.includes('unknown') }))
+        .then(allProducts => res.render('profiles/profile', { allProducts, user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER'), uncompleted: req.user.farmname.includes('unknown') }))
         .catch(err => console.log(err))
 })
 
