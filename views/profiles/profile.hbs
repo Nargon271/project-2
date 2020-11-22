@@ -1,8 +1,26 @@
+            <img src="{{user.profileImg}}" class="img-fluid" alt="Responsive image">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+<<<<<<< HEAD
             <h1>Welcome {{user.username}}!</h1>
             <p>You are a {{user.role}}, you have access to this page</p>
+=======
+            <hr>
+            <h2>Welcome {{user.username}}!</h2>
+            <hr>
+            <p>{{user.description}}</p>
+            <hr>
+            <p><strong>Role:</strong>{{user.role}}</p>
+            <p>Name: {{user.name}} {{user.surname}}</p>
+            <hr>
+            <h5>Contact info:</h5>
+            <p>{{user.email}}</p>
+            <p>{{user.address}}</p>
+            <hr>
+
+
+>>>>>>> 59817a044da41a5062f192b7c0230710092d7c60
             {{#if uncompleted}}
             <div class="alert alert-warning" role="alert">
                 Completa tu perfil

@@ -4,5 +4,15 @@
             <h1>{{sitetitle}}</h1>
             <p>Welcome to {{sitetitle}}</p>
         </div>
+        <div class="col-md-12" id="farmsMap"></div>
     </div>
 </div>
+
+
+{{!-- Scripts estáticos --}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+{{!-- scripts maps --}}
+<script src="/javascripts/styles.js"></script>
+<script src="/javascripts/farms-map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=_____API_KEY______&callback=initApp"></script>
