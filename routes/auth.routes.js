@@ -25,10 +25,10 @@ router.get('/sign-up', (req, res) => res.render('auth/signup-form'))
 
 router.post('/sign-up', (req, res) => {
     const { name, surname, username, email, password, role } = req.body
-    
+
 
     if (username === "" || name === "" || password === "" || surname === "" || email === "" || role === "") {
-        res.render("auth/signup-form", { errorMsg: "Rellena todos los campos" })
+        res.render("auth/signup-form", { errorMsg: "Fill all the fields" })
         return
     }
 
@@ -36,7 +36,7 @@ router.post('/sign-up', (req, res) => {
         .findOne({ username })
         .then(user => {
             if (user) {
-                res.render("auth/signup-form", { errorMsg: "El usuario ya existe" })
+                res.render("auth/signup-form", { errorMsg: "User already exists" })
                 return
             }
 
@@ -45,7 +45,7 @@ router.post('/sign-up', (req, res) => {
 
             Farm.create({ name, surname, username, email, password: hashPass, role })
                 .then(() => res.redirect('/'))
-                .catch(() => res.render("auth/signup-form", { errorMsg: "Hubo un error" }))
+                .catch(() => res.render("auth/signup-form", { errorMsg: "An error occured" }))
         })
         .catch(err => console.log(err))
 })
