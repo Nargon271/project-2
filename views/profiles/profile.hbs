@@ -4,12 +4,37 @@
             <h1>Welcome {{user.username}}!</h1>
             <p>You are a {{user.role}}, you hace access to this page</p>
             {{#if uncompleted}}
-            <p>COMPLETA TU PERFILLLLL!!</p>
+            <div class="alert alert-warning" role="alert">
+                Completa tu perfil
+            </div>
             {{/if}}
             {{#if isFarmer}}
             <a href="/profile/create-farm?id={{user.id}}">Create your farm profile</a>
             {{/if}}
         </div>
+            
     </div>
+        {{#if isFarmer}}
+        <h2>All my products</h2> 
+        <a href="#">Add product</a>
+        <hr>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card ">
+                <div class="card-body ">
+                    <img class="card-img-top" src="{{productImg}}" alt="{{name}}">
+                    <h3 class=" card-header card-title mb-5">{{name}}</h3>
+                    <div class="d-flex">
+                        <a class=" mr-2 btn btn-info" href="/products/{{_id}}">Edit</a>
+                        <a class=" mr-2 btn btn-info" href="/products/{{_id}}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        {{/if}}
+
+    
 </div>
 
