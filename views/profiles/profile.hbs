@@ -1,4 +1,4 @@
-<img src="{{user.profileImg}}" class="img-fluid" alt="Responsive image">
+<img src="{{user.profileImg}}" class="img-fluid" alt="{{user.farmname}}">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -29,10 +29,11 @@
 
     {{#if isFarmer}}
     <h2 class="mt-5">All my products</h2>
-    <a href="/profile/create-product" class="mt-5 btn btn-success">Add product</a>
+    <a href="/profile/{{user.id}}/create-product" class="mt-5 btn btn-success">Add product</a>
     <hr>
     <div class="row">
 
+        {{#each allProducts}}
         <div class="col-md-3">
             <div class="card ">
                 <div class="card-body ">
@@ -45,6 +46,7 @@
                 </div>
             </div>
         </div>
+        {{/each}}
 
     </div>
 

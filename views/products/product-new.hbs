@@ -5,7 +5,7 @@
 
         <div class="col-md-6">
 
-            <form action="/profile/create-product" method="POST">
+            <form action="/profile/{{farmInfo.id}}/create-product" method="POST">
                 <div class="form-group">
                     <label for="name-input">Name</label>
                     <input name="name" type="text" class="form-control" id="name-input">
@@ -33,9 +33,9 @@
                 <div class="form-group">
                     <label for="farm">Owner:</label>
                     <select name="farm" class="form-control" id="farm">
-                        {{#each allFarms}}
-                        <option value="{{_id}}">{{farmname}}</option>
-                        {{/each }}
+                        
+                        <option value="{{farm.id}}">{{farmInfo.farmname}}</option>
+                        
                     </select>
                 </div>
 

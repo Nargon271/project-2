@@ -36,7 +36,7 @@ function drawMarkers(farms) {
             map: mapInstance,
             position,
             title: elm.farmname,
-            icon: "https://www.flaticon.com/svg/static/icons/svg/3175/3175193.svg",
+            icon: "https://img.icons8.com/officexs/2x/farm.png",
             
         })
     })
