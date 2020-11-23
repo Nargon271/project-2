@@ -5,7 +5,7 @@
 
         <div class="col-md-6">
 
-            <form action="/profile/{{userInfo.id}}/create-product" method="POST">
+            <form action="/profile/myfarm/{{farmInfo.id}}/create-product" method="POST">
                 <div class="form-group">
                     <label for="name-input">Name</label>
                     <input name="name" type="text" class="form-control" id="name-input">
@@ -34,7 +34,7 @@
                     <label for="farm">Owner:</label>
                     <select name="farm" class="form-control" id="farm">
                         
-                        <option value="{{user.id}}">{{userInfo.name}}</option>
+                        <option value="{{farmInfo.id}}">{{farmInfo.farmname}}</option>
                         
                     </select>
                 </div>

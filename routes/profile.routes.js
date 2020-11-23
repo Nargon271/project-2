@@ -14,10 +14,10 @@ const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(re
 
 //NOT CHECKED
 router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
-    Product
-        .find()
+    Farm
+        .find({ user: req.user.id })
         .populate('user')
-        .then(allProducts => res.render('profiles/profile', { allProducts, user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER')}))
+        .then(allFarms => res.render('profiles/profile', { allFarms, user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER') }))
         .catch(err => console.log(err))
 })
 
@@ -30,7 +30,7 @@ router.get('/create-farm', (req, res) => {
     Farm
         .findById(userId)
         .populate('user')
-        .then(userInfo => res.render('profiles/farmer-new', {user: userId, userInfo }))
+        .then(userInfo => res.render('profiles/farmer-new', { user: userId, userInfo }))
         .catch(err => console.log(err))
 
 })
@@ -50,7 +50,6 @@ router.post('/create-farm', (req, res) => {
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
-
 
 //--------BUYER-----------//
 
@@ -80,22 +79,33 @@ router.post('/edit-buyer', (req, res) => {
 
 //-------------BUYER-------------//
 
+router.get('/myfarm/:id', (req, res) => {
+    const farmId = req.params.id
+    Promise.all([Farm.findById(farmId).populate('user'), Product.find({ farm: req.params.id}).populate('farm')])
+        .then(data => {
+            console.log(data)
+            res.render('profiles/myfarm', { farmInfo: data[0], allProducts: data[1] })
+        })
+        .catch(err => console.log(err))
+
+})
 
 //CREATE Product FORM (GET)
-router.get('/:id/create-product', (req, res) => {
-    const userId = req.params.id
+router.get('/myfarm/:id/create-product', (req, res) => {
+    const farmId = req.params.id
 
-    User
-        .findById(userId)
-        .then(userInfo => {
-            console.log("informacion", userInfo)
-            res.render('products/product-new', { userInfo })
+    Farm
+        .findById(farmId)
+        .populate('user')
+        .then(farmInfo => {
+            console.log(farmInfo)
+            res.render('products/product-new', { farmInfo })
         })
         .catch(err => console.log('Error:', err))
 })
 
 //CREATE Product FORM (POST)
-router.post('/:id/create-product', (req, res, next) => {
+router.post('/myfarm/:id/create-product', (req, res, next) => {
     const { name, description, profileImg, price, stock, farm } = req.body
     const farmId = req.params.id
 
@@ -107,7 +117,7 @@ router.post('/:id/create-product', (req, res, next) => {
 
 
 //EDIT Product FORM(GET)
-router.get('/:id/edit-product', (req, res, next) => {
+router.get('/myfarm/:id/edit-product', (req, res, next) => {
     const farmId = req.params.farm_id
     const productId = req.query.id
 
@@ -120,7 +130,7 @@ router.get('/:id/edit-product', (req, res, next) => {
 
 
 //EDIT Product FORM (POST)
-router.post('/:id/edit-product', (req, res, next) => {
+router.post('/myfarm/:id/edit-product', (req, res, next) => {
     const farmId = req.params.id
     const productId = req.query.id
 
@@ -134,26 +144,10 @@ router.post('/:id/edit-product', (req, res, next) => {
 })
 
 //DELETE Product FORM (GET)
-router.get('/:id/delete-product', (req, res, next) => {
+router.get('/myfarm/:id/delete-product', (req, res, next) => {
     Product.findByIdAndDelete(req.query.id)
         .then(() => res.redirect('/profile'))
         .catch(err => console.log('Error:', err))
 })
-
-
-
-// router.get('/:id', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
-
-//     const farmId = req.params.id
-
-//     Promise.all([Farm.findById(farmId), Product.find().populate('Farm')])
-//         .then(data => {
-//             console.log(data)
-//             res.render('profiles/profile', { farmId: data[0], allProducts: data[1] })
-//         })
-//         .catch(err => console.log('Error:', err))
-// })
-
-
 
 module.exports = router
