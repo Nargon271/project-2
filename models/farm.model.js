@@ -11,7 +11,7 @@ const farmSchema = new Schema({
         type: String,
         default: 'unknown'
     },
-    profileImg: {
+    farmImg: {
         type: String,
         default: 'unknown'
     },

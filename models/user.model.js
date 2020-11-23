@@ -31,10 +31,10 @@ const userSchema = new Schema({
         enum: ['BUYER', 'FARMER', 'ADMIN'],
         default: 'BUYER'
     },
-    // profileImg: {
-    //     type: String,
-    //     default: 'unknown'
-    // }
+    profileImg: {
+        type: String,
+        default: 'unknown'
+    }
 
 }, { timestamps: true }
 )
