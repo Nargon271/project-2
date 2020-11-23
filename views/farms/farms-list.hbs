@@ -7,10 +7,10 @@
         {{#each allFarms}}
         <div class="col-md-4 mb-5 ">
             <div class="card ">
-                <img class="card-img-top img-farm-card" src="{{profileImg}}" alt="{{farmname}}">
+                <img class="card-img-top img-farm-card" src="{{farmImg}}" alt="{{farmname}}">
                 <div class="card-body ">
                     <h3 class=" card-header card-title mb-3">{{farmname}}</h3>
-                    <p class="mb-3"><strong>The Owner: </strong> {{name}} {{surname}} </p>
+                    <p class="mb-3"><strong>The Owner: </strong> {{user.name}} {{user.surname}} </p>
                     <div class="d-flex">
                         <a class=" mr-2 btn btn-info" href="/farms/{{_id}}">View more</a>
                     </div>

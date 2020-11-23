@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 
     Product
         .find()
-        .populate('Farm')
+        .populate('farm')
         .then(allProducts => res.render('products/products-list', { allProducts }))
         .catch(err => next(new Error(err)))
 })

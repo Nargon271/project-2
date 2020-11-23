@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
+//brcipt
+const bcrypt = require('bcryptjs')
+const bcryptSalt = 10
+
 const User = require('../models/user.model')
 const Farm = require('../models/farm.model')
 const Product = require('../models/products.model')
@@ -8,34 +12,33 @@ const Product = require('../models/products.model')
 const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login-form', { errorMsg: 'You are not authorized, please log in' })
 const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(req.user.role) ? next() : res.render('auth/login-form', { errorMsg: 'Not authorized' })
 
-
+//NOT CHECKED
 router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
-
-
     Product
         .find()
-        .populate('Farm')
-        .then(allProducts => res.render('profiles/profile', { allProducts, user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER'), uncompleted: req.user.farmname.includes('unknown') }))
+        .populate('user')
+        .then(allProducts => res.render('profiles/profile', { allProducts, user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER')}))
         .catch(err => console.log(err))
 })
 
 
-//Create/Edit Farm FORM (GET)
+//Create/Edit Farm FORM (GET) CHECKED
 router.get('/create-farm', (req, res) => {
 
-    const farmId = req.query.id
+    const userId = req.query.id
 
     Farm
-        .findById(farmId)
-        .then(farmInfo => res.render('profiles/farmer-new', { farmInfo }))
+        .findById(userId)
+        .populate('user')
+        .then(userInfo => res.render('profiles/farmer-new', {user: userId, userInfo }))
         .catch(err => console.log(err))
 
 })
-//Create/Edit Farm FORM (POST)
+//Create/Edit Farm FORM (POST) CHECKED
 router.post('/create-farm', (req, res) => {
 
-    const farmId = req.query.id
-    const { farmname, description, address, latitude, longitude, profileImg } = req.body
+    const userId = req.query.id
+    const { farmname, description, address, latitude, longitude, farmImg, user } = req.body
 
     const location = {
         type: 'Point',
@@ -43,7 +46,7 @@ router.post('/create-farm', (req, res) => {
     }
 
     Farm
-        .findByIdAndUpdate(farmId, { farmname, description, address, location, profileImg })
+        .create({ farmname, description, address, location, farmImg, user: userId })
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
@@ -51,26 +54,26 @@ router.post('/create-farm', (req, res) => {
 
 //--------BUYER-----------//
 
-//Create/Edit BUYER FORM (GET)
+//Create/Edit BUYER FORM (GET) CHECKED
 router.get('/edit-buyer', (req, res) => {
 
-    const farmId = req.query.id
+    const userId = req.query.id
 
-    Farm
-        .findById(farmId)
-        .then(farmInfo => res.render('profiles/buyer-edit', { farmInfo }))
+    User
+        .findById(userId)
+        .then(userInfo => res.render('profiles/buyer-edit', { userInfo }))
         .catch(err => console.log(err))
 
 })
-//Create/Edit BUYER FORM (POST)
+//Create/Edit BUYER FORM (POST) CHECKED
 router.post('/edit-buyer', (req, res) => {
 
-    const farmId = req.query.id
-    const { name, surname, username, password, email, profileImg, address } = req.body
+    const userId = req.query.id
+    const { name, surname, username, password, email, profileImg } = req.body
 
 
-    Farm
-        .findByIdAndUpdate(farmId, { name, surname, username, password, email, profileImg, address })
+    User
+        .findByIdAndUpdate(userId, { name, surname, username, email, profileImg })
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
@@ -80,13 +83,13 @@ router.post('/edit-buyer', (req, res) => {
 
 //CREATE Product FORM (GET)
 router.get('/:id/create-product', (req, res) => {
-    const farmId = req.params.id
+    const userId = req.params.id
 
-    Farm
-        .findById(farmId)
-        .then(farmInfo => {
-            console.log("informacion", farmInfo)
-            res.render('products/product-new', { farmInfo })
+    User
+        .findById(userId)
+        .then(userInfo => {
+            console.log("informacion", userInfo)
+            res.render('products/product-new', { userInfo })
         })
         .catch(err => console.log('Error:', err))
 })

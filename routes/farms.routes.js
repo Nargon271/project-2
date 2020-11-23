@@ -1,13 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const Farm = require('../models/farm.model')
+const User = require('../models/user.model')
+
 // Endpoints
 
 // Farms List
 router.get('/', (req, res, next) => {
 
     Farm
-        .find({ role: 'FARMER' })
+        .find()
+        .populate('user')
         .then(allFarms => res.render('farms/farms-list', { allFarms }))
         .catch(err => next(new Error(err)))
 })
@@ -20,6 +23,7 @@ router.get('/:farm_id', (req, res) => {
 
     Farm
         .findById(farmId)
+        .populate('user')
         .then(theFarm => { res.render('farms/farm-details', theFarm) })
         .catch(err => next(new Error(err)))
 

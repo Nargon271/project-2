@@ -1,12 +1,12 @@
-<img class="img-farm-detail" src="{{profileImg}}" alt="{{farmname}}">
+<img class="img-farm-detail" src="{{farmImg}}" alt="{{farmname}}">
 <div class="container coasters-index">
 
-    <h1>{{name}}</h1>
+    <h1>{{farmname}}</h1>
     <figure>
     </figure>
     <h4 class="mt-5">Description</h4>
     <p>{{description}}</p>
-    <p><strong>The Owner: </strong> {{name}} {{surname}} </p>
+    <p><strong>The Owner: </strong> {{user.name}} {{user.surname}} </p>
     <p><strong>Latitude:</strong> {{location.coordinates.[0]}}</p>
     <p><strong>Longitude:</strong> {{location.coordinates.[1]}}</p>
 
