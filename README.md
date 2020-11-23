@@ -36,14 +36,20 @@ Here's the route we will be using:
 | `/auth/log-in` |    POST   | manage log in form |
 | `/auth/sign-up` |    GET   | show sign up form|
 | `/auth/sign-up` |    POST   | manage sign up form |
+|  Role : BUYER                                |
 | `/profile` |    GET    | show user profile data |
-| `/profile/create-farm` |    GET    | show form to complete farm details|
-| `/profile/create-farm` |    POST   | manage form to complete farm details|
-| `/profile/:id/create-product` |    GET    | show create new product form|
-| `/profile/:id/create-product` |    POST   | manage create new product form|
-| `/profile/:id/edit-product?id=XXX` |    GET    | show edit product form|
-| `/profile/:id/edit-product?id=XXX` |    POST   | manage edit product form|
-| `/profile/:id/delete-product?id=XXX` |    GET    | delete product|
+| `/profile/edit-buyer` |    GET    | show edit buyer form|
+| `/profile/edit-buyer` |    POST    | manage edit buyer form|
+|  Role : FARMER                                  |
+| `/profile` |    GET    | show user profile data |
+| `/profile/create-farm?id=XXX` |    GET    | show create farm form |
+| `/profile/create-farm?id=XXX` |    POST   | manage create farm form|
+| `/profile/myfarm/:id` |    GET    | show farm data |
+| `/profile/myfarm/:id/create-product` |    GET    | show create new product form|
+| `/profile/myfarm/:id/create-product` |    POST   | manage create new product form|
+| `/profile/myfarm/:id/edit-product?id=XXX` |    GET    | show edit product form|
+| `/profile/myfarm/:id/edit-product?id=XXX` |    POST   | manage edit product form|
+| `/profile/myfarm/:id/delete-product?id=XXX` |    GET    | delete product|
 
 
 
