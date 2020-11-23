@@ -19,7 +19,7 @@ const farmSchema = new Schema({
         type: {
             type: String
         },
-        coordinates: [Number]
+        coordinates: [Number],
     },
     address: {
         type: String,
@@ -29,8 +29,6 @@ const farmSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
-
-
 }, { timestamps: true })
 
 farmSchema.index({ location: '2dsphere' })

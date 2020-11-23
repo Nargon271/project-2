@@ -7,11 +7,10 @@ const flash = require("connect-flash")          // error control
 
 const User = require('./../models/user.model')
 
-
 module.exports = app => {
 
     app.use(session({
-        secret: "webmad1020",
+        secret: "app",
         resave: true,
         saveUninitialized: true
     }))
@@ -28,16 +27,15 @@ module.exports = app => {
     app.use(flash())             // error control
 
     passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
-        
         User.findOne({ username }, (err, user) => {
             if (err) {
                 return next(err);
             }
             if (!user) {
-                return next(null, false, { message: "Uusario no registrado" })
+                return next(null, false, { message: "User not registered" })
             }
             if (!bcrypt.compareSync(password, user.password)) {
-                return next(null, false, { message: "Contraseña incorrecta" })
+                return next(null, false, { message: "Incorrect Password" })
             }
             return next(null, user);
         })

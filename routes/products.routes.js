@@ -5,12 +5,9 @@ const Farm = require('../models/farm.model')
 const Product = require('../models/products.model')
 
 // Endpoints
-//router.get('/', (req, res) => res.render('products/products-list'))
-
 
 // Products List
 router.get('/', (req, res, next) => {
-
 
     Product
         .find()
@@ -27,11 +24,8 @@ router.get('/:product_id', (req, res) => {
 
     Product
         .findById(productId)
-        .populate('Farm')
-        .then(productInfo => {
-            console.log(productInfo.farm.farmname)
-            res.render('products/product-details', productInfo)
-        })
+        .populate('farm')
+        .then(productInfo => { res.render('products/product-details', productInfo) })
         .catch(err => next(new Error(err)))
 
 })

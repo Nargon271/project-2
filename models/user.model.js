@@ -5,12 +5,12 @@ const userSchema = new Schema({
     name: {
         type: String,
         required: true,
-        default: 'Desconocido'
+        default: 'unknown'
     },
     surname: {
         type: String,
         required: true,
-        default: 'Desconicido'
+        default: 'unknown'
     },
     username: {
         type: String,

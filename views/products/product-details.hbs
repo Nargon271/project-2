@@ -1,21 +1,22 @@
 <div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h1>{{name}}</h1>
+            <figure>
+                <img src="{{productImg}}" alt="{{name}}">
+            </figure>
+            <h4>Description</h4>
+            <p>{{description}}</p>
+            <p><strong>Price: </strong> {{price}} €/kg | <strong>Stock: </strong> {{stock}}</p>
 
-    <h1>{{name}}</h1>
-    <figure>
-        <img src="{{productImg}}" alt="{{name}}">
-    </figure>
-    <h4>Description</h4>
-    <p>{{description}}</p>
-    <p><strong>Price: </strong> {{price}} € | <strong>Stock: </strong> {{stock}}</p>
+            <hr>
 
-    <hr>
-
-    <h5>About the farm</h5>
-    <p><strong>Name:</strong> {{farm.farmname}}</p>
-    <p><strong>Decription</strong>: {{farm.description}}</p>
-    {{!-- <a href="/farms/{{id}}" class="btn btn-dark">Read more </a> --}}
-
-
-    <a href="/products" class="btn btn-dark">Go back </a>
+            <h5>About the farm</h5>
+            <p><strong>Name:</strong> {{farm.farmname}}</p>
+            <p><strong>Decription</strong>: {{farm.description}}</p>
+            <a href="/farms/{{farm.id}}" class="btn btn-dark mb-5">Read more about the farm </a>
+        </div>
+    </div>
+    <a href="/products" class="btn btn-dark mt-5">Go back </a>
 
 </div>
