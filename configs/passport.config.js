@@ -5,7 +5,7 @@ const LocalStrategy = require("passport-local").Strategy
 
 const flash = require("connect-flash")          // error control
 
-const Farm = require('./../models/farm.model')
+const User = require('./../models/user.model')
 
 
 module.exports = app => {
@@ -19,7 +19,7 @@ module.exports = app => {
     passport.serializeUser((user, cb) => cb(null, user._id))
 
     passport.deserializeUser((id, cb) => {
-        Farm.findById(id, (err, user) => {
+        User.findById(id, (err, user) => {
             if (err) { return cb(err); }
             cb(null, user);
         })
@@ -29,7 +29,7 @@ module.exports = app => {
 
     passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
         
-        Farm.findOne({ username }, (err, user) => {
+        User.findOne({ username }, (err, user) => {
             if (err) {
                 return next(err);
             }
