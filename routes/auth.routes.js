@@ -3,7 +3,7 @@ const router = express.Router()
 const passport = require("passport")
 
 //models
-const Farm = require('../models/farm.model')
+const User = require('../models/user.model')
 
 
 //bricpt
@@ -32,7 +32,7 @@ router.post('/sign-up', (req, res) => {
         return
     }
 
-    Farm
+    User
         .findOne({ username })
         .then(user => {
             if (user) {
@@ -43,7 +43,7 @@ router.post('/sign-up', (req, res) => {
             const salt = bcrypt.genSaltSync(bcryptSalt)
             const hashPass = bcrypt.hashSync(password, salt)
 
-            Farm.create({ name, surname, username, email, password: hashPass, role })
+            User.create({ name, surname, username, email, password: hashPass, role })
                 .then(() => res.redirect('/'))
                 .catch(() => res.render("auth/signup-form", { errorMsg: "An error occured" }))
         })

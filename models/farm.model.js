@@ -2,45 +2,16 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const farmSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        default: 'Desconocido'
-    },
-    surname: {
-        type: String,
-        required: true,
-        default: 'Desconicido'
-    },
     farmname: {
         type: String,
         unique: true,
         default: 'unknown'
     },
-    username: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true,
-    },
     description: {
         type: String,
         default: 'unknown'
     },
-    role: {
-        type: String,
-        enum: ['BUYER', 'FARMER', 'ADMIN'],
-        default: 'BUYER'
-    },
-    profileImg: {
+    farmImg: {
         type: String,
         default: 'unknown'
     },
@@ -54,6 +25,11 @@ const farmSchema = new Schema({
         type: String,
         default: "unknown"
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
+
 
 }, { timestamps: true })
 
