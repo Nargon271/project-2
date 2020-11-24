@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: 'project2',
-        format: async (req, file) => 'jpg'
+        allowed_formats: async (req, file) => "jpg,png",
     }
 })
 
