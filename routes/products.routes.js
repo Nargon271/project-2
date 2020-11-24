@@ -1,3 +1,4 @@
+const { text } = require('body-parser')
 const express = require('express')
 const router = express.Router()
 
@@ -8,12 +9,26 @@ const Product = require('../models/products.model')
 
 // Products List
 router.get('/', (req, res, next) => {
+    if (req.query.search) {
+        const regex = new RegExp(escapeRegExp(req.query.search), 'gi')
 
-    Product
-        .find()
-        .populate('farm')
-        .then(allProducts => res.render('products/products-list', { allProducts }))
-        .catch(err => next(new Error(err)))
+        //Get the product from DB which match the query
+        Product
+            .find({ name: regex })
+            .populate('farm')
+            .then(allProducts => res.render('products/products-list', { allProducts }))
+            .catch(err => next(new Error(err)))
+
+    } else {
+
+        //Get all products from DB
+        Product
+            .find()
+            .populate('farm')
+            .then(allProducts => res.render('products/products-list', { allProducts }))
+            .catch(err => next(new Error(err)))
+    }
+
 })
 
 
@@ -30,6 +45,11 @@ router.get('/:product_id', (req, res) => {
 
 })
 
+
+//REGEX escape
+function escapeRegExp(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
 
 
 module.exports = router

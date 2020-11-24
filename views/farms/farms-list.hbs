@@ -1,7 +1,15 @@
 <div class="container">
 
     <h2 class="mb-5">Farms List</h2>
-
+    <div class="row mb-5">
+        <div class=" col-md-6">
+            <form action="/farms" method="GET" class="form-inline">
+                <input class="form-control block mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
     <div class="row">
 
         {{#each allFarms}}

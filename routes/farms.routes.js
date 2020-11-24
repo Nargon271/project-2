@@ -7,13 +7,24 @@ const User = require('../models/user.model')
 
 // Farms List
 router.get('/', (req, res, next) => {
+    if (req.query.search) {
+        const regex = new RegExp(escapeRegExp(req.query.search), 'gi')
 
-    Farm
-        .find()
-        .populate('user')
-        .then(allFarms => res.render('farms/farms-list', { allFarms }))
-        .catch(err => next(new Error(err)))
+        Farm
+            .find({ farmname: regex })
+            .populate('user')
+            .then(allFarms => res.render('farms/farms-list', { allFarms }))
+            .catch(err => next(new Error(err)))
+
+    } else {
+        Farm
+            .find()
+            .populate('user')
+            .then(allFarms => res.render('farms/farms-list', { allFarms }))
+            .catch(err => next(new Error(err)))
+    }
 })
+
 
 
 // Farm details
@@ -28,6 +39,12 @@ router.get('/:farm_id', (req, res) => {
         .catch(err => next(new Error(err)))
 
 })
+
+
+//REGEX escape
+function escapeRegExp(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
 
 
 
