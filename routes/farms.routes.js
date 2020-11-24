@@ -3,6 +3,11 @@ const router = express.Router()
 const Farm = require('../models/farm.model')
 const User = require('../models/user.model')
 
+
+//Middleware
+
+
+
 // Endpoints
 
 // Farms List
@@ -23,6 +28,7 @@ router.get('/', (req, res, next) => {
             .then(allFarms => res.render('farms/farms-list', { allFarms }))
             .catch(err => next(new Error(err)))
     }
+
 })
 
 
