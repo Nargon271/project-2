@@ -21,11 +21,10 @@
                     <p class="mb-3"><strong>The Owner: </strong> {{user.name}} {{user.surname}} </p>
                     <div class="d-flex justify-content-between">
                         <a class=" mr-2 btn btn-info" href="/farms/{{_id}}">View more</a>
-                        {{#if isBuyer}}
-                        <form action="/farms" method="GET">
+                        <form action="/farms" method="POST">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add to fav</button>
                         </form>
-                        {{/if}}
+
                     </div>
                 </div>
 

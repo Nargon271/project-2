@@ -31,7 +31,15 @@ router.get('/', (req, res, next) => {
 
 })
 
+router.post('/', (req, res, next) => {
 
+    Farm
+        .findById(farmId)
+        .populate('user')
+        .then(theFarm => { res.render('farms/farm-details', theFarm) })
+        .catch(err => next(new Error(err)))
+
+})
 
 // Farm details
 router.get('/:farm_id', (req, res) => {
