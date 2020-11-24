@@ -9,6 +9,10 @@ const User = require('../models/user.model')
 const Farm = require('../models/farm.model')
 const Product = require('../models/products.model')
 
+//cloudinary
+const CDNupload = require('./../configs/cdn-upload.config')
+
+//midlewares
 const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login-form', { errorMsg: 'You are not authorized, please log in' })
 const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(req.user.role) ? next() : res.render('auth/login-form', { errorMsg: 'Not authorized' })
 
@@ -35,7 +39,7 @@ router.get('/create-farm', (req, res) => {
 
 })
 //Create/Edit Farm FORM (POST) CHECKED
-router.post('/create-farm', (req, res) => {
+router.post('/create-farm', CDNupload.single('farmImg'), (req, res) => {
 
     const userId = req.query.id
     const { farmname, description, address, latitude, longitude, farmImg, user } = req.body
