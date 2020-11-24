@@ -35,7 +35,11 @@ const userSchema = new Schema({
         imageName: String,
         path: String,
         originalName: String
-    }
+    },
+    favorites: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Farm'
+    }]
     
 }, { timestamps: true })
 
