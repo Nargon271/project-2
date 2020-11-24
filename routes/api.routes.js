@@ -7,7 +7,7 @@ const Farm = require('../models/farm.model')
 router.get('/farms', (req, res, next) => {
 
     Farm
-        .find({ role: 'FARMER' })
+        .find()
         .then(farms => res.json(farms))
         .catch(err => next(err))
 })

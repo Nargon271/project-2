@@ -3,6 +3,11 @@ const router = express.Router()
 const Farm = require('../models/farm.model')
 const User = require('../models/user.model')
 
+
+//Middleware
+
+
+
 // Endpoints
 
 // Farms List
@@ -23,9 +28,18 @@ router.get('/', (req, res, next) => {
             .then(allFarms => res.render('farms/farms-list', { allFarms }))
             .catch(err => next(new Error(err)))
     }
+
 })
 
+router.post('/', (req, res, next) => {
 
+    Farm
+        .findById(farmId)
+        .populate('user')
+        .then(theFarm => { res.render('farms/farm-details', theFarm) })
+        .catch(err => next(new Error(err)))
+
+})
 
 // Farm details
 router.get('/:farm_id', (req, res) => {

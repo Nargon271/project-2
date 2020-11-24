@@ -16,7 +16,7 @@ const CDNupload = require('./../configs/cdn-upload.config')
 const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login-form', { errorMsg: 'You are not authorized, please log in' })
 const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(req.user.role) ? next() : res.render('auth/login-form', { errorMsg: 'Not authorized' })
 
-//NOT CHECKED
+
 router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
     Farm
         .find({ user: req.user.id })
@@ -46,7 +46,7 @@ router.post('/create-farm', CDNupload.single('farmImg'), (req, res) => {
         imageName: req.body.imageName,
         path: req.file.path,
         originalName: req.file.originalname
-    }  
+    }
     const { farmname, description, address, latitude, longitude, farmImg, user } = req.body
 
     const location = {
@@ -60,13 +60,12 @@ router.post('/create-farm', CDNupload.single('farmImg'), (req, res) => {
         .catch(err => console.log(err))
 })
 
-//--------BUYER-----------//
 
-//Create/Edit BUYER FORM (GET) CHECKED
+
+//Edit User FORM (GET)
 router.get('/edit-user', (req, res) => {
 
     const userId = req.query.id
-    
 
     User
         .findById(userId)
@@ -74,7 +73,7 @@ router.get('/edit-user', (req, res) => {
         .catch(err => console.log(err))
 
 })
-//Create/Edit BUYER FORM (POST) CHECKED
+//Edit User FORM (POST)
 router.post('/edit-user', CDNupload.single('profileImg'), (req, res) => {
 
     const userId = req.query.id
@@ -82,7 +81,7 @@ router.post('/edit-user', CDNupload.single('profileImg'), (req, res) => {
         imageName: req.body.imageName,
         path: req.file.path,
         originalName: req.file.originalname
-    }  
+    }
     const { name, surname, username, password, email, profileImg } = req.body
 
 
@@ -92,11 +91,11 @@ router.post('/edit-user', CDNupload.single('profileImg'), (req, res) => {
         .catch(err => console.log(err))
 })
 
-//-------------BUYER-------------//
 
+//SHOW FARM data
 router.get('/myfarm/:id', (req, res) => {
     const farmId = req.params.id
-    Promise.all([Farm.findById(farmId).populate('user'), Product.find({ farm: req.params.id}).populate('farm')])
+    Promise.all([Farm.findById(farmId).populate('user'), Product.find({ farm: req.params.id }).populate('farm')])
         .then(data => {
             console.log(data)
             res.render('profiles/myfarm', { farmInfo: data[0], allProducts: data[1] })
@@ -134,6 +133,53 @@ router.post('/myfarm/:id/create-product', CDNupload.single('productImg'), (req, 
         .catch(err => console.log('Error:', err))
 
 })
+
+
+
+//Edit Farm FORM (GET) 
+router.get('/myfarm/:id/edit', (req, res) => {
+
+    const farmId = req.params.id
+
+    Farm
+        .findById(farmId)
+        .populate('user')
+        .then(farmInfo => res.render('profiles/farmer-edit', { farm: farmId, farmInfo }))
+        .catch(err => console.log(err))
+
+})
+//Edit Farm FORM (POST)
+router.post('/myfarm/:id/edit', CDNupload.single('farmImg'), (req, res) => {
+
+    const farmId = req.params.id
+    const farmImage = {
+        imageName: req.body.imageName,
+        path: req.file.path,
+        originalName: req.file.originalname
+    }
+    const { farmname, description, address, latitude, longitude, farmImg } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
+
+    Farm
+        .findByIdAndUpdate(farmId, { farmname, description, address, location, farmImg: farmImage })
+        .then(() => res.redirect('/profile'))
+        .catch(err => console.log(err))
+})
+
+//Edit Farm FORM (GET) 
+router.get('/myfarm/:id/delete', (req, res) => {
+    const farmId = req.params.id
+    Farm
+        .findByIdAndDelete(farmId)
+        .then(() => res.redirect('/profile'))
+        .catch(err => console.log(err))
+
+})
+
 
 
 //EDIT Product FORM(GET)
