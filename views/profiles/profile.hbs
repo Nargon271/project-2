@@ -18,9 +18,9 @@
             {{#if isFarmer}}
             <a href="/profile/create-farm?id={{user.id}}" class="btn btn-warning">Create your farm profile</a>
             {{/if}}
-            {{#if isBuyer}}
-            <a href="/profile/edit-buyer?id={{user.id}}" class="btn btn-warning">Edit your profile</a>
-            {{/if}}
+            
+            <a href="/profile/edit-user?id={{user.id}}" class="btn btn-warning">Edit your profile</a>
+            
         </div>
     </div>
         {{#each allFarms}}

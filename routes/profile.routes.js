@@ -54,18 +54,18 @@ router.post('/create-farm', (req, res) => {
 //--------BUYER-----------//
 
 //Create/Edit BUYER FORM (GET) CHECKED
-router.get('/edit-buyer', (req, res) => {
+router.get('/edit-user', (req, res) => {
 
     const userId = req.query.id
 
     User
         .findById(userId)
-        .then(userInfo => res.render('profiles/buyer-edit', { userInfo }))
+        .then(userInfo => res.render('profiles/user-edit', { userInfo }))
         .catch(err => console.log(err))
 
 })
 //Create/Edit BUYER FORM (POST) CHECKED
-router.post('/edit-buyer', (req, res) => {
+router.post('/edit-user', (req, res) => {
 
     const userId = req.query.id
     const { name, surname, username, password, email, profileImg } = req.body
