@@ -12,8 +12,9 @@ const farmSchema = new Schema({
         default: 'unknown'
     },
     farmImg: {
-        type: String,
-        default: 'unknown'
+        imageName: String,
+        path: String,
+        originalName: String
     },
     location: {
         type: {

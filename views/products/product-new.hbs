@@ -5,7 +5,7 @@
 
         <div class="col-md-6">
 
-            <form action="/profile/myfarm/{{farmInfo.id}}/create-product" method="POST">
+            <form action="/profile/myfarm/{{farmInfo.id}}/create-product" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name-input">Name</label>
                     <input name="name" type="text" class="form-control" id="name-input">
@@ -16,8 +16,8 @@
                 </div>
                 <div class='form-group'>
                     <div class="custom-file">
-                        <input name="profileImg" type="file" class="custom-file-input" id="profileImg">
-                        <label class="custom-file-label" for="profileImg">Select image</label>
+                        <input name="productImg" type="file" class="custom-file-input" id="productImg">
+                        <label class="custom-file-label" for="productImg">Select image</label>
                     </div>
                 </div>
                 <div class="form-group">

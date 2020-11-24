@@ -4,7 +4,7 @@
 
         <div class="col-md-6">
 
-            <form action="/profile/myfarm/{{farm}}/edit-product?id={{id}}" method="POST">
+            <form action="/profile/myfarm/{{farm}}/edit-product?id={{id}}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name-input">Name</label>
                     <input name="name" type="text" class="form-control" id="name-input" value="{{name}}">
@@ -17,13 +17,13 @@
 
                 {{!-- IMG  --}}
 
-                <img src="{{profileImg}}" alt="{{name}}">
+                <img src="{{productImg.path}}" alt="{{name}}">
 
                 <div class='form-group'>
                     <div class="custom-file">
-                        <input name="profileImg" type="file" class="custom-file-input" id="profileImg"
-                            value="{{profileImg}}">
-                        <label class="custom-file-label" for="profileImg">Select image</label>
+                        <input name="productImg" type="file" class="custom-file-input" id="productImg"
+                            value="{{productImg.path}}">
+                        <label class="custom-file-label" for="productImg">Select image</label>
                     </div>
                 </div>
 

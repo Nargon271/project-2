@@ -42,6 +42,11 @@ router.get('/create-farm', (req, res) => {
 router.post('/create-farm', CDNupload.single('farmImg'), (req, res) => {
 
     const userId = req.query.id
+    const farmImage = {
+        imageName: req.body.imageName,
+        path: req.file.path,
+        originalName: req.file.originalname
+    }  
     const { farmname, description, address, latitude, longitude, farmImg, user } = req.body
 
     const location = {
@@ -50,7 +55,7 @@ router.post('/create-farm', CDNupload.single('farmImg'), (req, res) => {
     }
 
     Farm
-        .create({ farmname, description, address, location, farmImg, user: userId })
+        .create({ farmname, description, address, location, farmImg: farmImage, user: userId })
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
@@ -61,6 +66,7 @@ router.post('/create-farm', CDNupload.single('farmImg'), (req, res) => {
 router.get('/edit-user', (req, res) => {
 
     const userId = req.query.id
+    
 
     User
         .findById(userId)
@@ -69,14 +75,19 @@ router.get('/edit-user', (req, res) => {
 
 })
 //Create/Edit BUYER FORM (POST) CHECKED
-router.post('/edit-user', (req, res) => {
+router.post('/edit-user', CDNupload.single('profileImg'), (req, res) => {
 
     const userId = req.query.id
+    const profileImage = {
+        imageName: req.body.imageName,
+        path: req.file.path,
+        originalName: req.file.originalname
+    }  
     const { name, surname, username, password, email, profileImg } = req.body
 
 
     User
-        .findByIdAndUpdate(userId, { name, surname, username, email, profileImg })
+        .findByIdAndUpdate(userId, { name, surname, username, email, profileImg: profileImage })
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 })
@@ -109,11 +120,16 @@ router.get('/myfarm/:id/create-product', (req, res) => {
 })
 
 //CREATE Product FORM (POST)
-router.post('/myfarm/:id/create-product', (req, res, next) => {
-    const { name, description, profileImg, price, stock, farm } = req.body
+router.post('/myfarm/:id/create-product', CDNupload.single('productImg'), (req, res, next) => {
+    const { name, description, productImg, price, stock, farm } = req.body
     const farmId = req.params.id
+    const productImage = {
+        imageName: req.body.imageName,
+        path: req.file.path,
+        originalName: req.file.originalname
+    }
 
-    Product.create({ name, description, profileImg, price, stock, farm: farmId })
+    Product.create({ name, description, productImg: productImage, price, stock, farm: farmId })
         .then(() => res.redirect('/profile'))
         .catch(err => console.log('Error:', err))
 
@@ -134,14 +150,19 @@ router.get('/myfarm/:id/edit-product', (req, res, next) => {
 
 
 //EDIT Product FORM (POST)
-router.post('/myfarm/:id/edit-product', (req, res, next) => {
+router.post('/myfarm/:id/edit-product', CDNupload.single('productImg'), (req, res, next) => {
     const farmId = req.params.id
     const productId = req.query.id
+    const productImage = {
+        imageName: req.body.imageName,
+        path: req.file.path,
+        originalName: req.file.originalname
+    }
 
     const { name, description, productImg, price, stock } = req.body
 
     Product
-        .findByIdAndUpdate(productId, { name, description, productImg, price, stock })
+        .findByIdAndUpdate(productId, { name, description, productImg: productImage, price, stock })
         .then(() => res.redirect('/profile'))
         .catch(err => console.log('Error:', err))
 

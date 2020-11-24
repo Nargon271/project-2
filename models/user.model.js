@@ -32,9 +32,11 @@ const userSchema = new Schema({
         default: 'BUYER'
     },
     profileImg: {
-        type: String,
-        default: 'unknown'
+        imageName: String,
+        path: String,
+        originalName: String
     }
+    
 }, { timestamps: true })
 
 const User = mongoose.model('User', userSchema)
