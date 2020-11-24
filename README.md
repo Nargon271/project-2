@@ -38,10 +38,12 @@ Here's the route we will be using:
 | `/auth/sign-up` |    POST   | manage sign up form |
 |  Role : BUYER                                |
 | `/profile` |    GET    | show user profile data |
-| `/profile/edit-buyer` |    GET    | show edit buyer form|
-| `/profile/edit-buyer` |    POST    | manage edit buyer form|
+| `/profile/edit-user` |    GET    | show edit user form|
+| `/profile/edit-user` |    POST    | manage edit user form|
 |  Role : FARMER                                  |
 | `/profile` |    GET    | show user profile data |
+| `/profile/edit-user` |    GET    | show edit user form|
+| `/profile/edit-user` |    POST    | manage edit user form|
 | `/profile/create-farm?id=XXX` |    GET    | show create farm form |
 | `/profile/create-farm?id=XXX` |    POST   | manage create farm form|
 | `/profile/myfarm/:id` |    GET    | show farm data |
