@@ -1,18 +1,18 @@
-<h1 class="mb-5 mt-5 text-center">Products List</h1>
+<h1 class="mb-5 mt-5 text-center product-list-h1">Products List</h1>
 <section class="product-list mt-5">
     <div class="container">
         <div class="row mb-5">
             <div class=" col-12">
-                <form class="form-search" action="/products" method="GET" class="form-inline">
-                    <input class="form-control input-search mr-sm-2" type="search" placeholder="Search"
-                        aria-label="Search" name="search">
-                    <button class="btn btn-success btn-search my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-search" action="/products" method="GET">
+                    <input class="form-control input-search" type="search" placeholder="Search" aria-label="Search"
+                        name="search">
+                    <button class="btn btn-search" type="submit">Search</button>
                 </form>
             </div>
         </div>
         <div class="row mb-5">
             {{#each allProducts}}
-            <div class="col-md-4 mb-5 ">
+            <div class="col-sm-6 col-md-4 mb-5 ">
                 <div class="card card-shadow">
                     <div class="card-body ">
                         <img class="card-img-top img-card" src="{{productImg.path}}" alt="{{name}}">

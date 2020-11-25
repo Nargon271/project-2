@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
 body {
   margin:0px;
   padding:0px;
@@ -17,6 +19,9 @@ img{
   width:100%
 }
 
+h1{
+  font-family: 'Rock Salt', cursive;
+}
 
 /* Cards */
 
@@ -31,6 +36,10 @@ img{
 }
 
 .card-header{
+  background-color: #fff;
+}
+
+.card{
   background-color: #fff;
 }
 
@@ -49,15 +58,11 @@ img{
 /* How it works section */
 .account-icon{
   width:80px;
-
-}
-.card{
-  background-color: #eee0cb;
 }
 
 .form-search{
   display:flex;
-  justify-content: center;
+  justify-content: space-around;
   padding:20px;
   background-color:#eec584
 }
@@ -67,7 +72,7 @@ img{
 }
 
 .input-search{
- width:75%!important
+ width:80%!important
 }
 
 .btn-search.btn-search-farm{
@@ -93,6 +98,11 @@ img{
 .product-list{
 
 }
+
+.product-list-h1{
+  color: #726953;
+}
+
 .product-details{
 
 }
@@ -107,6 +117,15 @@ font-size:1.5em;
 
 .btn-product{
   background-color:#e8a62d;
+  color:#fff;
+  -webkit-box-shadow: 5px 5px 8px -8px  #969696;
+  box-shadow: 5px 5px 8px -8px  #969696;
+}
+
+.btn-product:hover{
+  background-color:#fff;
+  border-color:#e8a62d;
+  color:#e8a62d;
   -webkit-box-shadow: 5px 5px 8px -8px  #969696;
   box-shadow: 5px 5px 8px -8px  #969696;
 }
@@ -125,14 +144,36 @@ font-size:1.5em;
 .farm-details{
 
 }
-
-.btn-farm{
-  background-color:#a6a668;
+.btn-fav{
+  background-color:#fff;
+  border:1px solid #b21e35;
+  color:#b21e35;
+  -webkit-box-shadow: 5px 5px 8px -8px  #969696;
+  box-shadow: 5px 5px 8px -8px  #969696;
+  
+}
+.btn-fav:hover{
+  background-color:#b21e35;
+  border:1px solid #fff;
+  color:#fff;
   -webkit-box-shadow: 5px 5px 8px -8px  #969696;
   box-shadow: 5px 5px 8px -8px  #969696;
 }
 
 
+.btn-farm{
+  background-color:#a6a668;
+  -webkit-box-shadow: 5px 5px 8px -8px  #969696;
+  box-shadow: 5px 5px 8px -8px  #969696;
+  color:#fff;
+}
+
+.btn-farm:hover{
+  background-color:#fff;
+  border-color:#a6a668;
+  -webkit-box-shadow: 5px 5px 8px -8px  #969696;
+  box-shadow: 5px 5px 8px -8px  #969696;
+}
 
 .img-farm-detail{
   height: 300px;
@@ -146,15 +187,28 @@ font-size:1.5em;
   object-fit: cover;
 }
 
-
-
-
-
-
 .hero img {
   height: 500px;
   object-fit: cover;
 }
 
+/* MEDIA QUERIES*/
 
+@media (max-width: 600px) {
 
+  /* FORM SEARCH */
+
+  .form-search{
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .input-search{
+    width:100%!important
+   }
+
+   .btn-search{
+    width:30%!important;
+    margin-top:20px
+   }
+}
