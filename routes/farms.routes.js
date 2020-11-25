@@ -3,7 +3,12 @@ const router = express.Router()
 const Farm = require('../models/farm.model')
 const User = require('../models/user.model')
 
-// Endpoints
+
+//Middleware
+//const isLogged = (req) => req.isAuthenticated() ? true : null
+const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login-form', { errorMsg: 'You are not authorized, please log in' })
+
+// Endpointsnpm
 
 // Farms List
 router.get('/', (req, res, next) => {
@@ -25,7 +30,18 @@ router.get('/', (req, res, next) => {
     }
 })
 
+router.post('/', ensureAuthenticated, (req, res, next) => {
 
+    const theUser = req.user
+    console.log(theUser)
+    const list = theUser.favorites
+    let newlist = [...list, req.query.id]
+    User
+        .findByIdAndUpdate(req.user.id, { favorites: newlist })
+        .then(() => res.redirect('/farms'))
+        .catch(err=> console.log(err))
+
+})
 
 // Farm details
 router.get('/:farm_id', (req, res) => {

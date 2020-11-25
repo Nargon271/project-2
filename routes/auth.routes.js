@@ -5,12 +5,9 @@ const passport = require("passport")
 //models
 const User = require('../models/user.model')
 
-
 //bricpt
 const bcrypt = require('bcryptjs')
 const bcryptSalt = 10
-
-
 
 //Sign up
 router.get('/sign-up', (req, res) => res.render('auth/signup-form'))
@@ -31,17 +28,16 @@ router.post('/sign-up', (req, res) => {
                 res.render("auth/signup-form", { errorMsg: "User already exists" })
                 return
             }
-
+            let favs = []
             const salt = bcrypt.genSaltSync(bcryptSalt)
             const hashPass = bcrypt.hashSync(password, salt)
 
-            User.create({ name, surname, username, email, password: hashPass, role })
+            User.create({ name, surname, username, email, password: hashPass, role, favorites: favs })
                 .then(() => res.redirect('/'))
                 .catch(() => res.render("auth/signup-form", { errorMsg: "An error occured" }))
         })
         .catch(err => console.log(err))
 })
-
 
 //Log in
 router.get('/log-in', (req, res) => res.render('auth/login-form'))
@@ -52,6 +48,5 @@ router.post('/log-in', passport.authenticate('local', {
     failureFlash: true,
     passReqToCallback: true
 }))
-
 
 module.exports = router
