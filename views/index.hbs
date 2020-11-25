@@ -13,19 +13,36 @@
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
                     <li class="glide__slide">
-                        <img class="slide" src="/images/barn.svg" alt="">
+                        <img class="slide"
+                            src="https://images.unsplash.com/photo-1565959269841-a4fe0b077a08?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                            alt="">
                     </li>
                     <li class="glide__slide">
-                        <img class="slide" src="/images/barn.svg" alt="">
+                        <img class="slide"
+                            src="https://images.unsplash.com/photo-1600786705277-a0047445cd22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+                            alt="">
                     </li>
                     <li class="glide__slide">
-                        <img class="slide" src="/images/barn.svg" alt="">
+                        <img class="slide"
+                            src="https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+                            alt="">
+                    </li>
+                    <li class="glide__slide">
+                        <img class="slide"
+                            src="https://images.unsplash.com/photo-1588962092038-2f20a6daca6e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=901&q=80"
+                            alt="">
+                    </li>
+                    <li class="glide__slide">
+                        <img class="slide"
+                            src="https://images.unsplash.com/photo-1591510669755-5e6dbb1ca33d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=752&q=80"
+                            alt="">
                     </li>
                 </ul>
             </div>
         </div>
     </section>
 </div>
+
 {{!-- end section hero --}}
 <div class="container">
     {{!-- start section How it works --}}
@@ -90,15 +107,21 @@
 
 {{!-- Static Scripts --}}
 
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
-<script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+{{!-- <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script> --}}
+
+
 <script>
     new Glide('.glide', {
         type: 'carousel',
         startAt: 0,
-        perView: 1
+        perView: 1,
+        gap: 0,
+        autoplay: 3000
     }).mount()
+
 </script>
 {{!-- Google Maps API Scripts --}}
 <script src="/javascripts/styles.js"></script>

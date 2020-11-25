@@ -2,7 +2,11 @@ body {
   margin:0px;
   padding:0px;
   font-family: sans-serif; 
-  background-color: #eee0cb;
+  background-color: #e8d2ae;
+}
+
+.slide{
+  height: 200px;
 }
 
 textarea{
@@ -47,8 +51,9 @@ img{
   width:80px;
 
 }
-
-/* Search bar  */
+.card{
+  background-color: #eee0cb;
+}
 
 .form-search{
   display:flex;
@@ -145,6 +150,11 @@ font-size:1.5em;
 
 
 
+
+.hero img {
+  height: 500px;
+  object-fit: cover;
+}
 
 
 

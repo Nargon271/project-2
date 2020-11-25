@@ -23,6 +23,26 @@
 
         </div>
     </div>
+    {{!-- favorites --}}
+        <h3>Favorite Farms</h3>
+    <div class="row">
+        {{#each userInfo}}
+        <div class="col-md-3">
+            <div class="card ">
+                <div class="card-body ">
+                    <img class="card-img-top" src="{{farmImg.path}}" alt="{{farmname}}">
+                    <h3 class=" card-header card-title mb-5">{{farmname}}</h3>
+                    <div class="d-flex">
+                        <a class=" mr-2 btn btn-info" href="/profile/myfarm/{{_id}}">view more</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+    </div>
+
     {{#each allFarms}}
     <div class="row">
         <div class="col-md-4 mb-5 ">

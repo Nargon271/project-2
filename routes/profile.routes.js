@@ -18,13 +18,14 @@ const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(re
 
 
 router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
-    Farm
-        .find({ user: req.user.id })
-        .populate('user')
-        .then(allFarms => res.render('profiles/profile', { allFarms, user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER') }))
+    
+    Promise.all([Farm.find({ user: req.user.id }).populate('user'), User.findById(req.user.id).populate('favorites')])
+        .then(data => {
+            console.log('datos farmer',data[1].favorites)
+            res.render('profiles/profile', { allFarms: data[0], user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER'), userInfo: data[1].favorites })
+            })
         .catch(err => console.log(err))
 })
-
 
 //Create/Edit Farm FORM (GET) CHECKED
 router.get('/create-farm', (req, res) => {
