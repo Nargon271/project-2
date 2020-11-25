@@ -31,7 +31,7 @@ h1{
 /* Cards */
 
 .img-card{
-  height: 250px;
+  height: 230px;
   object-fit: cover;
 }
 
@@ -46,6 +46,10 @@ h1{
 
 .card{
   background-color: #fff;
+}
+
+.card-detail{
+  background-color:#fff;
 }
 
 /* Home */
@@ -104,7 +108,8 @@ h1{
 }
 
 .product-details{
-
+height: 80vh;;
+ 
 }
 
 .product-details h2{
@@ -146,7 +151,7 @@ font-size:1.5em;
 }
 
 .farm-details{
-
+  height: 85vh;
 }
 .btn-fav{
   background-color:#fff;
@@ -184,10 +189,25 @@ font-size:1.5em;
   object-fit: cover;
 }
 
+
+/*Log in*/
+
+.log-in{
+  height:81vh;
+}
+
+/*Sign-up*/
+
+.sign-up{
+  height:81vh;
+}
+
+
 /* Profile */
 
 .img-profile {
-  height: 300px;
+  height: 150px;
+  width: 150px;
   object-fit: cover;
 }
 
@@ -197,9 +217,41 @@ font-size:1.5em;
   object-position: center;
 }
 
+/*Create Farm*/
+
+.create-farm{
+  height:81vh;
+}
+
+/*Create Product*/
+
+.new-product{
+  height:81vh;
+}
+
+/*Edit User*/
+.edit-user{
+  height:81vh;
+}
+
 /* MY FARM */
 
 .my-farm{}
+
+/* FOOTER */
+footer{
+  background-color:#a6a668;
+
+}
+
+footer a {
+  color:white;
+}
+
+footer a:hover {
+  color:black;
+  text-decoration:none;
+}
 
 /* MEDIA QUERIES*/
 

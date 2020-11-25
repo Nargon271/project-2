@@ -1,5 +1,5 @@
 <h1 class="mb-5 mt-5 text-center farm-list-h1">Farms List</h1>
-<section class="product-list mt-5">
+<section class="product-list mt-5 mb-5">
     <div class="container">
         <div class="row mb-5">
             <div class=" col-12">
@@ -13,14 +13,14 @@
         <div class="row">
 
             {{#each allFarms}}
-            <div class="col-sm-6 col-md-4 mb-5 ">
+            <div class="col-sm-6 col-md-4 mb-5">
                 <div class="card card-shadow">
                     <img class="card-img-top img-card" src="{{farmImg.path}}" alt="{{farmname}}">
                     <div class="card-body ">
-                        <h3 class=" card-header card-title mb-3">{{farmname}}</h3>
+                        <h3>{{farmname}}</h3>
                         <p class="mb-3"><strong>The Owner: </strong> {{user.name}} {{user.surname}} </p>
-                        <div class="d-flex justify-content-between">
-                            <a class=" mr-2 btn btn-farm" href="/farms/{{_id}}">View more</a>
+                        <div class="mt-5 d-flex justify-content-between">
+                            <a class="mr-2 btn btn-farm" href="/farms/{{_id}}">View more</a>
                             <form action="/farms?id={{_id}}" method="POST">
                                 <button class="btn btn-fav" type="submit">Add to fav</button>
                             </form>
@@ -32,7 +32,7 @@
             </div>
             {{/each}}
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <a class="mt-3 btn btn-outline-secondary" href="/">Back to Index </a>
         </div>
     </div>

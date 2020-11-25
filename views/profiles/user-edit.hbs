@@ -1,42 +1,45 @@
-<div class="container">
+<section class="mt-5 edit-user">
+    <div class="container">
 
-    <div class="row d-flex justify-content-center align-items-center">
+        <div class="row d-flex justify-content-center align-items-center">
 
-        <div class="col-md-7">
+            <div class="col-md-7">
 
-            <h2 class="mb-5">Edit your details </h2>
+                <h1 class="mb-5">Edit your details </h1>
 
-            <form class="mb-5" method="POST" action="/profile/edit-user?id={{userInfo.id}}" enctype="multipart/form-data">
+                <form class="mb-5" method="POST" action="/profile/edit-user?id={{userInfo.id}}"
+                    enctype="multipart/form-data">
 
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name" value="{{userInfo.name}}">
-                </div>
-                <div class="form-group">
-                    <label>Surname</label>
-                    <input type="text" class="form-control" name="surname" value="{{userInfo.surname}}">
-                </div>
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" name="username" value="{{userInfo.username}}">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email" value="{{userInfo.email}}">
-                </div>
-
-                <div class='form-group'>
-                    <div class="custom-file">
-                        <input name="profileImg" type="file" class="custom-file-input" id="profileImg"
-                            value="{{userInfo.profileImg}}">
-                        <label class="custom-file-label" for="profileImg">Select image</label>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" value="{{userInfo.name}}">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Surname</label>
+                        <input type="text" class="form-control" name="surname" value="{{userInfo.surname}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" value="{{userInfo.username}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" value="{{userInfo.email}}">
+                    </div>
 
-                <button type="submit" class="btn btn-success btn-block">Edit your profile</button>
-            </form>
-            <a class="mt-5 btn btn-outline-secondary" href="/profile">Go back</a>
+                    <div class='form-group'>
+                        <div class="custom-file">
+                            <input name="profileImg" type="file" class="custom-file-input" id="profileImg"
+                                value="{{userInfo.profileImg}}">
+                            <label class="custom-file-label" for="profileImg">Select image</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-block mt-3">Edit your profile</button>
+                </form>
+                <a class="mt-5 btn btn-outline-secondary" href="/profile">Go back</a>
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
+</section>

@@ -1,53 +1,55 @@
-<div class="container">
-    <h1 class="text-center mb-5">Sign up</h1>
-    <div class="row justify-content-center mt-5">
+<section class="mt-5 sign-up">
+    <div class="container">
+        <h1 class="text-center mb-5">Sign up</h1>
+        <div class="row justify-content-center mt-5">
 
-        <div class="col-md-5">
+            <div class="col-md-5">
 
-            <form method="POST" action="/auth/sign-up">
+                <form method="POST" action="/auth/sign-up">
 
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name">
-                </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name">
+                    </div>
 
-                <div class="form-group">
-                    <label>Surname</label>
-                    <input type="text" class="form-control" name="surname">
-                </div>
+                    <div class="form-group">
+                        <label>Surname</label>
+                        <input type="text" class="form-control" name="surname">
+                    </div>
 
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" name="username">
-                </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username">
+                    </div>
 
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email">
-                </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email">
+                    </div>
 
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password">
-                </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password">
+                    </div>
 
-                <div class="form-group">
-                    <label for="user-list">You are a :</label>
-                    <select name="role" class="form-control" id="user-list">
-                        <option>Seleccionar</option>
-                        <option value="FARMER">Farmer</option>
-                        <option value="BUYER">Buyer</option>
-                    </select>
-                </div>
+                    <div class="form-group">
+                        <label for="user-list">You are a :</label>
+                        <select name="role" class="form-control" id="user-list">
+                            <option>Seleccionar</option>
+                            <option value="FARMER">Farmer</option>
+                            <option value="BUYER">Buyer</option>
+                        </select>
+                    </div>
 
-                <button type="submit" class="btn btn-dark btn-block">Sign up</button>
+                    <button type="submit" class="btn btn-dark btn-block mt-3">Sign up</button>
 
-                {{#if errorMsg}}
-                <div style="background:#b21e35; color: white; text-align: center; padding: 10px; margin-top:10px">
-                    {{errorMsg}}</div>
-                {{/if}}
+                    {{#if errorMsg}}
+                    <div style="background:#b21e35; color: white; text-align: center; padding: 10px; margin-top:10px">
+                        {{errorMsg}}</div>
+                    {{/if}}
 
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</section>
