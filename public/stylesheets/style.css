@@ -1,12 +1,25 @@
 body {
   font-weight: 100;
   font-family: sans-serif; 
+  background-color: #e8d2ae;
 }
 
+.slide{
+  height: 200px;
+}
 
 textarea{
   resize:none;
 
+}
+
+/* How it works section */
+.account-icon{
+  width:80px;
+
+}
+.card{
+  background-color: #eee0cb;
 }
 
 img{
@@ -31,6 +44,11 @@ img{
 #farmsMap{
   height: 450px;
   background-color: rgb(2, 68, 2);
+}
+
+.hero img {
+  height: 500px;
+  object-fit: cover;
 }
 
 
