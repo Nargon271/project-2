@@ -3,11 +3,21 @@ body {
   font-family: sans-serif; 
 }
 
+.slide{
+  height: 200px;
+}
 
 textarea{
   resize:none;
 
 }
+
+/* How it works section */
+.account-icon{
+  width:80px;
+
+}
+
 
 img{
   width:100%
