@@ -1,4 +1,4 @@
-<img src="{{user.profileImg.path}}" class="img-fluid" alt="{{user.name}}">
+<img src="{{user.profileImg.path}}" class="img-profile" alt="{{user.name}}">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -7,7 +7,7 @@
             <hr>
             <p>{{user.description}}</p>
             <hr>
-            <p><strong>Role:</strong>{{user.role}}</p>
+            <p><strong>Role:</strong> {{user.role}}</p>
             <p>Name: {{user.name}} {{user.surname}}</p>
             <hr>
             <h5>Contact info:</h5>
@@ -16,7 +16,7 @@
             <hr>
 
             {{#if isFarmer}}
-            <a href="/profile/create-farm?id={{user.id}}" class="btn btn-warning">Create your farm profile</a>
+            <a href="/profile/create-farm?id={{user.id}}" class="btn btn-farm">Create your farm profile</a>
             {{/if}}
 
             <a href="/profile/edit-user?id={{user.id}}" class="btn btn-warning">Edit your profile</a>
@@ -31,7 +31,7 @@
                     <img class="card-img-top" src="{{farmImg.path}}" alt="{{farmname}}">
                     <h3 class=" card-header card-title mb-5">{{farmname}}</h3>
                     <div class="d-flex">
-                        <a class=" mr-2 btn btn-info" href="/profile/myfarm/{{_id}}">My farm</a>
+                        <a class=" mr-2 btn btn-farm" href="/profile/myfarm/{{_id}}">My farm</a>
 
                     </div>
                 </div>

@@ -1,22 +1,24 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <h1>{{name}}</h1>
-            <figure>
-                <img src="{{productImg.path}}" alt="{{name}}">
-            </figure>
-            <h4>Description</h4>
-            <p>{{description}}</p>
-            <p><strong>Price: </strong> {{price}} €/kg | <strong>Stock: </strong> {{stock}}</p>
-
-            <hr>
-
-            <h5>About the farm</h5>
-            <p><strong>Name:</strong> {{farm.farmname}}</p>
-            <p><strong>Decription</strong>: {{farm.description}}</p>
-            <a href="/farms/{{farm.id}}" class="btn btn-dark mb-5">Read more about the farm </a>
+<section class="product-details mt-5">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-around">
+            <div class="col-md-4">
+                <figure>
+                    <img src="{{productImg.path}}" class=" img-product-detail" alt="{{name}}">
+                </figure>
+            </div>
+            <div class="col-md-7">
+                <h1>{{name}}</h1>
+                <hr>
+                <h2>Description</h2>
+                <p>{{description}}</p>
+                <p><strong>Price: </strong> {{price}} € | <strong>Stock: </strong> {{stock}}</p>
+                <hr>
+                <h3>About the farm</h3>
+                <p><strong>Name:</strong> {{farm.farmname}}</p>
+                <p><strong>Decription</strong>: {{farm.description}}</p>
+                <a href="/farms/{{farm.id}}" class="btn btn-farm mb-5">Read more</a>
+            </div>
         </div>
+        <a href="/products" class="btn btn-dark mt-5">Go back </a>
     </div>
-    <a href="/products" class="btn btn-dark mt-5">Go back </a>
-
-</div>
+</section>

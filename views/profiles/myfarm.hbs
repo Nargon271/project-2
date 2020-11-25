@@ -1,5 +1,5 @@
 <img class="img-farm-detail" src="{{farmInfo.farmImg.path}}" alt="{{farmInfo.farmname}}">
-<div class="container coasters-index">
+<div class="container">
 
     <h1>{{farmInfo.farmname}}</h1>
     <figure>
@@ -17,27 +17,30 @@
 
 </div>
 
+<div class="container">
+    <hr>
+    <h2 class="mt-5">All my products</h2>
+    <a href="/profile/myfarm/{{farmInfo.id}}/create-product" class="mt-5 btn btn-success">Add product</a>
+    <hr>
 
+    <div class="row">
 
-<h2 class="mt-5">All my products</h2>
-<a href="/profile/myfarm/{{farmInfo.id}}/create-product" class="mt-5 btn btn-success">Add product</a>
-<hr>
-<div class="row">
-
-    {{#each allProducts}}
-    <div class="col-md-4 mt-5">
-        <div class="card ">
-            <div class="card-body ">
-                <img class="card-img-top" src="{{productImg.path}}" alt="{{name}}">
-                <h3 class=" card-header card-title mb-5">{{name}}</h3>
-                <div class="d-flex">
-                    <a class=" mr-2 btn btn-primary" href="/profile/myfarm/{{farm.id}}/edit-product?id={{id}}">Edit</a>
-                    <a class=" mr-2 btn btn-danger"
-                        href="/profile/myfarm/{{farm.id}}/delete-product?id={{id}}">Delete</a>
+        {{#each allProducts}}
+        <div class="col-md-4 mt-5">
+            <div class="card card-shadow">
+                <div class="card-body ">
+                    <img class="card-img-top img-card" src="{{productImg.path}}" alt="{{name}}">
+                    <h3 class=" card-header card-title mb-5">{{name}}</h3>
+                    <div class="d-flex">
+                        <a class=" mr-2 btn btn-primary"
+                            href="/profile/myfarm/{{farm.id}}/edit-product?id={{id}}">Edit</a>
+                        <a class=" mr-2 btn btn-danger"
+                            href="/profile/myfarm/{{farm.id}}/delete-product?id={{id}}">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{/each}}
+        {{/each}}
 
+    </div>
 </div>

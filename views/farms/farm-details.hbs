@@ -1,18 +1,23 @@
-<img class="img-farm-detail" src="{{farmImg.path}}" alt="{{farmname}}">
-<div class="container coasters-index">
-
-    <h1>{{farmname}}</h1>
-    <figure>
-    </figure>
-    <h4 class="mt-5">Description</h4>
-    <p>{{description}}</p>
-    <p><strong>The Owner: </strong> {{user.name}} {{user.surname}} </p>
-    <p><strong>Latitude:</strong> {{location.coordinates.[0]}}</p>
-    <p><strong>Longitude:</strong> {{location.coordinates.[1]}}</p>
-
-
-
-
-    <a href="/farms" class="btn btn-dark mt-5">Go back </a>
-
-</div>
+<section class="farm-details">
+    <div class="container-fluid">
+        <div class="row">
+            <img class="img-farm-detail" src="{{farmImg.path}}" alt="{{farmname}}">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <h1>{{farmname}}</h1>
+                <hr>
+                <h4 class="mt-2">Description</h4>
+                <p>{{description}}</p>
+                <p><strong>The Owner: </strong> {{user.name}} {{user.surname}} </p>
+                <p><strong>E-mail: </strong> {{user.email}}</p>
+                <p><strong>Address: </strong> {{address}}</p>
+                <p><strong>Latitude:</strong> {{location.coordinates.[0]}} | <strong>Longitude:</strong>
+                    {{location.coordinates.[1]}}</p>
+            </div>
+        </div>
+        <a href="/farms" class="btn btn-farm mt-5">Go back </a>
+    </div>
+</section>

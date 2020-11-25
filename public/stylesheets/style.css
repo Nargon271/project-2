@@ -1,16 +1,46 @@
 body {
-  font-weight: 100;
+  margin:0px;
+  padding:0px;
   font-family: sans-serif; 
+  background-color: #eee0cb;
+}
+
+textarea{
+  resize:none;
+}
+
+img{
+  width:100%
+}
+
+
+/* Cards */
+
+.img-card{
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-shadow{
+  -webkit-box-shadow: 9px 11px 8px -8px #A3A3A3; 
+  box-shadow: 9px 11px 8px -8px #A3A3A3;
+}
+
+.card-header{
+  background-color: #fff;
+}
+
+/* Home */
+
+#farmsMap{
+  height: 450px;
+  background-color: rgb(2, 68, 2);
 }
 
 .slide{
   height: 200px;
 }
 
-textarea{
-  resize:none;
-
-}
 
 /* How it works section */
 .account-icon{
@@ -18,30 +48,103 @@ textarea{
 
 }
 
+/* Search bar  */
 
-img{
-  width:100%
+.form-search{
+  display:flex;
+  justify-content: center;
+  padding:20px;
+  background-color:#eec584
 }
 
-.img-farm-card{
-  height: 250px;
+.form-search-farm{
+  background-color:#cacaaa;
+}
+
+.input-search{
+ width:75%!important
+}
+
+.btn-search.btn-search-farm{
+  background-color:#3f4739;
+  border-color:#3f4739;
+ }
+
+.btn-search{
+  width:15%!important;
+  background-color:#726953;
+  border-color:#726953;
+  color:#fffaff;
+ }
+
+ .btn-search:hover{
+  background-color:#fffaff;
+  border-color:#726953;
+  color:#726953;
+ }
+
+/* Products */
+
+.product-list{
+
+}
+.product-details{
+
+}
+
+.product-details h2{
+font-size:1.5em;
+}
+
+.product-details h3{
+  font-size:1.3em;
+}
+
+.btn-product{
+  background-color:#e8a62d;
+  -webkit-box-shadow: 5px 5px 8px -8px  #969696;
+  box-shadow: 5px 5px 8px -8px  #969696;
+}
+
+.img-product-detail{
+  height: 350px;
   object-fit: cover;
+  -webkit-box-shadow: 9px 11px 8px -8px #A3A3A3; 
+  box-shadow: 9px 11px 8px -8px #A3A3A3;
+
 }
+
+
+/* Farms */
+
+.farm-details{
+
+}
+
+.btn-farm{
+  background-color:#a6a668;
+  -webkit-box-shadow: 5px 5px 8px -8px  #969696;
+  box-shadow: 5px 5px 8px -8px  #969696;
+}
+
+
 
 .img-farm-detail{
   height: 300px;
   object-fit: cover;
 }
 
-.img-fluid {
+/* Profile */
+
+.img-profile {
   height: 300px;
   object-fit: cover;
 }
 
-#farmsMap{
-  height: 450px;
-  background-color: rgb(2, 68, 2);
-}
+
+
+
+
 
 
 
