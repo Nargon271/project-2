@@ -9,12 +9,15 @@ const Product = require('../models/products.model')
 
 // Products List
 router.get('/', (req, res, next) => {
+    
+    //const query = req.query.search ? regex :
+
     if (req.query.search) {
         const regex = new RegExp(escapeRegExp(req.query.search), 'gi')
 
         //Get the product from DB which match the query
         Product
-            .find({ name: regex })
+            .find({ name: regex },{name: 1, productImg:1})
             .populate('farm')
             .then(allProducts => res.render('products/products-list', { allProducts }))
             .catch(err => next(new Error(err)))
@@ -23,7 +26,7 @@ router.get('/', (req, res, next) => {
 
         //Get all products from DB
         Product
-            .find()
+            .find({}, { name: 1, productImg: 1 })
             .populate('farm')
             .then(allProducts => res.render('products/products-list', { allProducts }))
             .catch(err => next(new Error(err)))
@@ -32,7 +35,7 @@ router.get('/', (req, res, next) => {
 })
 
 
-// Products List
+// Products Details
 router.get('/:product_id', (req, res) => {
 
     const productId = req.params.product_id
@@ -41,7 +44,7 @@ router.get('/:product_id', (req, res) => {
         .findById(productId)
         .populate('farm')
         .then(productInfo => { res.render('products/product-details', productInfo) })
-        .catch(err => next(new Error(err)))
+        .catch(err => console.log(err))
 
 })
 

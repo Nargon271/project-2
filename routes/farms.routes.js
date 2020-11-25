@@ -16,14 +16,14 @@ router.get('/', (req, res, next) => {
         const regex = new RegExp(escapeRegExp(req.query.search), 'gi')
 
         Farm
-            .find({ farmname: regex })
+            .find({ farmname: regex },{farmname: 1, farmImg:1, user: 1})
             .populate('user')
             .then(allFarms => res.render('farms/farms-list', { allFarms }))
             .catch(err => next(new Error(err)))
 
     } else {
         Farm
-            .find()
+            .find({}, { farmname: 1, farmImg: 1, user: 1 })
             .populate('user')
             .then(allFarms => res.render('farms/farms-list', { allFarms }))
             .catch(err => next(new Error(err)))

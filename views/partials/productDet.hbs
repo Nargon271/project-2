@@ -1,0 +1,18 @@
+    <div class="col-md-4">
+        <figure>
+            <img src="{{this.productImg.path}}" class=" img-product-detail" alt="{{this.name}}">
+        </figure>
+    </div>
+    <div class="col-md-7">
+        <h1>{{this.name}}</h1>
+        <hr>
+        <h2>Description</h2>
+        <p>{{this.description}}</p>
+        <p><strong>Price: </strong> {{this.price}} € | <strong>Stock: </strong> {{this.stock}}</p>
+        <hr>
+        <h3>About the farm</h3>
+        <p><strong>Name:</strong> {{this.farm.farmname}}</p>
+        <p><strong>Decription</strong>: {{this.farm.description}}</p>
+        <a href="/farms/{{this.farm.id}}" class="btn btn-farm mb-5">Read more</a>
+    </div>
+
