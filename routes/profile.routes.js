@@ -16,12 +16,11 @@ const CDNupload = require('./../configs/cdn-upload.config')
 const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login-form', { errorMsg: 'You are not authorized, please log in' })
 const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(req.user.role) ? next() : res.render('auth/login-form', { errorMsg: 'Not authorized' })
 
-
+router.get('/log-out', (req, res) => req.session.destroy((err) => res.redirect("/")))
 router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
     
     Promise.all([Farm.find({ user: req.user.id }).populate('user'), User.findById(req.user.id).populate('favorites')])
         .then(data => {
-            console.log('datos farmer',data[1].favorites)
             res.render('profiles/profile', { allFarms: data[0], user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER'), userInfo: data[1].favorites })
             })
         .catch(err => console.log(err))
