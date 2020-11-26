@@ -9,17 +9,29 @@ App is a free web application which is targeted for agriculture practitioners, w
 This app connects farmers directly to the local consumer market. This will give independent farmers and cooperatives ability to sell their farm produce easily and as well enable buyers to contact farmers directly.
 Farmers can post their products and attract more buyers which will save precious time and money.They can get better profits than normal. As these portals reduce middleman buyers and sellers can privately chat to negotiate prices safely.
 
-You can register as a Farmer or as a Buyer
-If you are a farmer
+You can register as a Farmer or as a Buyer.
+
+If you are a farmer:
 ## 1. Create your account 
 Create your account filling the sign-up form with your personal details and upload a picture of you. Introduce yourself to potential customers.
 
 ## 2. Register your farm
 Upload a photo, add a short description and all the details of your farm. Don't forget to fill your farm's coordinates if you want to be displayed in our map and be easily found by customers
 
-
 ## 3. List your products
 Upload a photo, just enter the details of the product, click Submit and instantly your Ad will be displayed.
+
+## 4. Start to sell
+Discuss with customers interested in your products about the sale details and close the deal. Selling your farm's products has never been easier.
+
+
+If you are a buyer:
+
+## 1. Create your account 
+Create your account filling the sign-up form with your personal details and upload a picture of you.
+
+## 2. Reach out your favourite farms
+Add to your personal page your favourite farm and contact them about the products you wish to buy.
 
 
 
@@ -58,4 +70,4 @@ Here's the route we will be using:
 
 ## That's it!
 
-Enjoy it! :heart:
+Enjoy your local products and stay healty! :heart:
