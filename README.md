@@ -2,23 +2,24 @@
 
 # Project 2
 
-App to connect farmers to buyers directly
+App to connect local farmers to buyers directly
 
 ## Introduction
-App is a free web application which is targeted for agriculture practitioners, which provides a platform where app connects and brings together the farming community and helps them in selling, buying and exchanging agriculture commodities and services locally without middlemen through an Add/listing which they can post right from their mobile.
+App is a free web application which is targeted for agriculture practitioners, which provides a platform which connects and brings together the farming community and helps them in selling, buying and exchanging agriculture commodities and services locally without middlemen through an Add/listing which they can post right from the webpage.
 This app connects farmers directly to the local consumer market. This will give independent farmers and cooperatives ability to sell their farm produce easily and as well enable buyers to contact farmers directly.
-Farmers can post their products and attract more buyers which will save precious time and money. They can get better profits than normal. As these portals reduce middleman buyers and sellers can privately chat to negotiate prices safely.
+Farmers can post their products and attract more buyers which will save precious time and money.They can get better profits than normal. As these portals reduce middleman buyers and sellers can privately chat to negotiate prices safely.
+
+You can register as a Farmer or as a Buyer
+If you are a farmer
+## 1. Create your account 
+Create your account filling the sign-up form with your personal details and upload a picture of you. Introduce yourself to potential customers.
+
+## 2. Register your farm
+Upload a photo, add a short description and all the details of your farm. Don't forget to fill your farm's coordinates if you want to be displayed in our map and be easily found by customers
 
 
-## 1. MARKET PLACE
-People can connect with each other to buy or sell in over 12 categories and 110 sub-categories.
-
-## 2. E-MAIL OR CALL
-Seller or buyer can share details by e-mail and then discuss the deal on phone contact. Buyers can ask and post questions related to their farming practices.
-
-
-## 3. POST AD/LISTING IN ONE MINUTE
-It let end user to post anything related to Agriculture in one minute. Take a snap or upload a photo, just enter the details of the product, click Submit and instantly end user’s Ad will be displayed.
+## 3. List your products
+Upload a photo, just enter the details of the product, click Submit and instantly your Ad will be displayed.
 
 
 
