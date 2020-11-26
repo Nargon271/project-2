@@ -12,26 +12,20 @@ Farmers can post their products and attract more buyers which will save precious
 You can register as a Farmer or as a Buyer.
 
 ## If you are a farmer:
- 1. Create your account. 
-Create your account filling the sign-up form with your personal details and upload a picture of you. Introduce yourself to potential customers.
+ 1. Create your account: Fill the sign-up form with your personal details and upload a picture of you. Introduce yourself to potential customers.
 
- 2. Register your farm.
-Upload a photo, add a short description and all the details of your farm. Don't forget to fill your farm's coordinates if you want to be displayed in our map and be easily found by customers
+ 2. Register your farm: upload a photo, add a short description and all the details of your farm. Don't forget to fill your farm's coordinates if you want to be displayed in our map and be easily found by customers.
 
- 3. List your products.
-Upload a photo, just enter the details of the product, click Submit and instantly your Ad will be displayed.
+ 3. List your products: upload a photo, enter the details of the product, click Submit and instantly your Ad will be displayed.
 
- 4. Start to sell.
-Discuss with customers interested in your products about the sale details and close the deal. Selling your farm's products has never been easier.
+ 4. Start to sell: discuss with customers interested in your products about the sale details and close the deal.
 
 
 ## If you are a buyer:
 
- 1. Create your account.
-Create your account filling the sign-up form with your personal details and upload a picture of you.
+ 1. Create your account: Fill the sign-up form with your personal details and upload a picture of you.
 
- 2. Reach out your favourite farms.
-Add to your personal page your favourite farm and contact them about the products you wish to buy.
+ 2. Reach out your favourite farms: add to your personal page your favourite farms and contact them about the products you wish to buy.
 
 
 
