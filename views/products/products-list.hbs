@@ -12,17 +12,7 @@
         </div>
         <div class="row mb-5">
             {{#each allProducts}}
-            <div class="col-sm-6 col-md-4 mb-5 ">
-                <div class="card card-shadow">
-                    <div class="card-body ">
-                        <img class="card-img-top img-card" src="{{productImg.path}}" alt="{{name}}">
-                        <h3 class="mb-5 mt-3">{{name}}</h3>
-                        <div class="d-flex">
-                            <a class=" mr-2 btn btn-product" href="/products/{{_id}}">View more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {{>productList}}
             {{/each}}
         </div>
         <div class="row">
