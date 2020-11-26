@@ -5,7 +5,7 @@
 Web App to connect local farmers to buyers directly
 
 ## Introduction
-BEE-FARM is a free web application which is targeted for agriculture practitioners, which provides a platform which connects and brings together the farming community and helps them in selling, buying and exchanging agriculture commodities and services locally without middlemen through an Add/listing which they can post right from the webpage.
+BEE-FARM is a free web application which is targeted for agriculture practitioners, which provides a platform to connect and bring together the farming community and to help them in selling, buying and exchanging agriculture commodities and services locally without middlemen through an Add/listing which they can post right from the webpage.
 This app connects farmers directly to the local consumer market. This will give independent farmers and cooperatives ability to sell their farm produce easily and as well enable buyers to contact farmers directly.
 Farmers can post their products and attract more buyers which will save precious time and money.They can get better profits than normal. As these portals reduce middleman buyers and sellers can privately chat to negotiate prices safely.
 
