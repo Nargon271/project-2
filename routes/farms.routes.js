@@ -3,9 +3,10 @@ const router = express.Router()
 const Farm = require('../models/farm.model')
 const User = require('../models/user.model')
 
+const escapeRegExp = require('./../utils/text.utils')
 
-//Middleware
-//const isLogged = (req) => req.isAuthenticated() ? true : null
+// Middleware
+
 const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login-form', { errorMsg: 'You are not authorized, please log in' })
 
 // Endpointsnpm
@@ -22,11 +23,13 @@ router.get('/', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
+
 router.post('/', ensureAuthenticated, (req, res, next) => {
 
     const theUser = req.user
     const list = theUser.favorites
     let newlist = [...list, req.query.id]
+    
     User
         .findByIdAndUpdate(req.user.id, { favorites: newlist })
         .then(() => res.redirect('/farms'))
@@ -43,15 +46,6 @@ router.get('/:farm_id', (req, res, next) => {
         .populate('user')
         .then(theFarm => { res.render('farms/farm-details', theFarm) })
         .catch(err => next(new Error(err)))
-
 })
-
-
-//REGEX escape
-function escapeRegExp(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-}
-
-
 
 module.exports = router
