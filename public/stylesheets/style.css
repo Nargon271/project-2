@@ -7,6 +7,10 @@ body {
   background-color: #e8d2ae;
 }
 
+.navbar-dark .navbar-nav .nav-link{
+  color:#fff;
+}
+
 .bg-app{
   background-color: #a89b8c;
   -webkit-box-shadow: 9px 11px 8px -8px #A3A3A3; 
@@ -56,7 +60,10 @@ h1{
 
 .glide__track {
   margin-bottom: 0px;
-  
+}
+
+.align-text{
+  text-align: right;
 }
 
 #farmsMap{
@@ -64,12 +71,12 @@ h1{
   background-color: #e4caa0;
 }
 .farms-map{
-padding-top:20px;
+padding-top:30px;
 }
 
 .farms-map h2{
   font-family: 'Rock Salt', cursive;
-  margin: 50px 0px;
+  margin-bottom:20px;
 }
 
 /* community */
@@ -304,6 +311,27 @@ footer a:hover {
 }
 
 /* MEDIA QUERIES*/
+
+@media (max-width: 768px) {
+
+  /* SUPPORT section */
+  .community{
+    padding-top:30px;
+  }
+
+  .farms-map{
+    padding-top:0px;
+  }
+
+  .how-it-works{
+    padding-top:50px;
+  }
+
+  .align-text{
+  text-align:center;
+  }
+}
+
 
 @media (max-width: 600px) {
 
