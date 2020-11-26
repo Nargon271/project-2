@@ -1,28 +1,35 @@
 ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# Project 2
+# BEE FARM - IronHack Web Dev Bootcamp - Project 2
 
-App to connect farmers to buyers directly
+Web App to connect local farmers to buyers directly
 
 ## Introduction
-App is a free web application which is targeted for agriculture practitioners, which provides a platform where app connects and brings together the farming community and helps them in selling, buying and exchanging agriculture commodities and services locally without middlemen through an Add/listing which they can post right from their mobile.
+BEE-FARM is a free web application which is targeted for agriculture practitioners, which provides a platform to connect and bring together the farming community and to help them in selling, buying and exchanging agriculture commodities and services locally without middlemen through an Add/listing which they can post right from the webpage.
 This app connects farmers directly to the local consumer market. This will give independent farmers and cooperatives ability to sell their farm produce easily and as well enable buyers to contact farmers directly.
-Farmers can post their products and attract more buyers which will save precious time and money. They can get better profits than normal. As these portals reduce middleman buyers and sellers can privately chat to negotiate prices safely.
+Farmers can post their products and attract more buyers which will save precious time and money.They can get better profits than normal. As these portals reduce middleman buyers and sellers can privately chat to negotiate prices safely.
+
+You can register as a Farmer or as a Buyer.
+
+## If you are a farmer:
+ 1. Create your account: fill the sign-up form with your personal details and upload a picture of you. Introduce yourself to potential customers.
+
+ 2. Register your farm: upload a photo, add a short description and all the details of your farm. Don't forget to fill your farm's coordinates if you want to be displayed in our map and be easily found by customers.
+
+ 3. List your products: upload a photo, enter the details of the product, click Submit and instantly your Ad will be displayed.
+
+ 4. Start to sell: discuss with customers interested in your products about the sale details and close the deal.
 
 
-## 1. MARKET PLACE
-People can connect with each other to buy or sell in over 12 categories and 110 sub-categories.
+## If you are a buyer:
 
-## 2. E-MAIL OR CALL
-Seller or buyer can share details by e-mail and then discuss the deal on phone contact. Buyers can ask and post questions related to their farming practices.
+ 1. Create your account: fill the sign-up form with your personal details and upload a picture of you.
 
-
-## 3. POST AD/LISTING IN ONE MINUTE
-It let end user to post anything related to Agriculture in one minute. Take a snap or upload a photo, just enter the details of the product, click Submit and instantly end user’s Ad will be displayed.
+ 2. Reach out your favourite farms: add to your personal page your favourite farms and contact them about the products you wish to buy.
 
 
 
-Here's the route we will be using:
+## Here's the route we will be using:
 
 |   Route   | HTTP Verb |   Description   |
 |-----------|-----------|-----------------|
@@ -57,4 +64,4 @@ Here's the route we will be using:
 
 ## That's it!
 
-Enjoy it! :heart:
+Enjoy your local products and stay healthy! :heart:
