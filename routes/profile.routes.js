@@ -23,11 +23,10 @@ router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (r
         .then(data => {
             res.render('profiles/profile', { allFarms: data[0], user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER'), userInfo: data[1].favorites })
             })
-        .catch(err => console.log(err))
-})
+        .catch(err => next(new Error(err)))})
 
 //Create/Edit Farm FORM (GET) CHECKED
-router.get('/create-farm', (req, res) => {
+router.get('/create-farm', ensureAuthenticated, (req, res) => {
 
     const userId = req.query.id
 
@@ -35,11 +34,10 @@ router.get('/create-farm', (req, res) => {
         .findById(userId)
         .populate('user')
         .then(userInfo => res.render('profiles/farmer-new', { user: userId, userInfo }))
-        .catch(err => console.log(err))
-
+        .catch(err => next(new Error(err)))
 })
 //Create/Edit Farm FORM (POST) CHECKED
-router.post('/create-farm', CDNupload.single('farmImg'), (req, res) => {
+router.post('/create-farm', ensureAuthenticated, CDNupload.single('farmImg'), (req, res) => {
 
     const userId = req.query.id
     const farmImage = {
@@ -57,24 +55,22 @@ router.post('/create-farm', CDNupload.single('farmImg'), (req, res) => {
     Farm
         .create({ farmname, description, address, location, farmImg: farmImage, user: userId })
         .then(() => res.redirect('/'))
-        .catch(err => console.log(err))
-})
+        .catch(err => next(new Error(err)))})
 
 
 
 //Edit User FORM (GET)
-router.get('/edit-user', (req, res) => {
+router.get('/edit-user', ensureAuthenticated, (req, res) => {
 
     const userId = req.query.id
 
     User
         .findById(userId)
         .then(userInfo => res.render('profiles/user-edit', { userInfo }))
-        .catch(err => console.log(err))
-
+        .catch(err => next(new Error(err)))
 })
 //Edit User FORM (POST)
-router.post('/edit-user', CDNupload.single('profileImg'), (req, res) => {
+router.post('/edit-user', ensureAuthenticated, CDNupload.single('profileImg'), (req, res) => {
 
     const userId = req.query.id
     const profileImage = {
@@ -88,38 +84,33 @@ router.post('/edit-user', CDNupload.single('profileImg'), (req, res) => {
     User
         .findByIdAndUpdate(userId, { name, surname, username, email, profileImg: profileImage })
         .then(() => res.redirect('/'))
-        .catch(err => console.log(err))
-})
+        .catch(err => next(new Error(err)))})
 
 
 //SHOW FARM data
-router.get('/myfarm/:id', (req, res) => {
+router.get('/myfarm/:id', ensureAuthenticated, (req, res) => {
     const farmId = req.params.id
     Promise.all([Farm.findById(farmId).populate('user'), Product.find({ farm: req.params.id }).populate('farm')])
         .then(data => {
-            console.log(data)
             res.render('profiles/myfarm', { farmInfo: data[0], allProducts: data[1] })
         })
-        .catch(err => console.log(err))
-
+        .catch(err => next(new Error(err)))
 })
 
 //CREATE Product FORM (GET)
-router.get('/myfarm/:id/create-product', (req, res) => {
+router.get('/myfarm/:id/create-product', ensureAuthenticated, (req, res) => {
     const farmId = req.params.id
 
     Farm
         .findById(farmId)
         .populate('user')
         .then(farmInfo => {
-            console.log(farmInfo)
             res.render('products/product-new', { farmInfo })
         })
-        .catch(err => console.log('Error:', err))
-})
+        .catch(err => next(new Error(err)))})
 
 //CREATE Product FORM (POST)
-router.post('/myfarm/:id/create-product', CDNupload.single('productImg'), (req, res, next) => {
+router.post('/myfarm/:id/create-product', ensureAuthenticated, CDNupload.single('productImg'), (req, res, next) => {
     const { name, description, productImg, price, stock, farm } = req.body
     const farmId = req.params.id
     const productImage = {
@@ -130,14 +121,13 @@ router.post('/myfarm/:id/create-product', CDNupload.single('productImg'), (req, 
 
     Product.create({ name, description, productImg: productImage, price, stock, farm: farmId })
         .then(() => res.redirect('/profile'))
-        .catch(err => console.log('Error:', err))
-
+        .catch(err => next(new Error(err)))
 })
 
 
 
 //Edit Farm FORM (GET) 
-router.get('/myfarm/:id/edit', (req, res) => {
+router.get('/myfarm/:id/edit', ensureAuthenticated, (req, res) => {
 
     const farmId = req.params.id
 
@@ -145,11 +135,10 @@ router.get('/myfarm/:id/edit', (req, res) => {
         .findById(farmId)
         .populate('user')
         .then(farmInfo => res.render('profiles/farmer-edit', { farm: farmId, farmInfo }))
-        .catch(err => console.log(err))
-
+        .catch(err => next(new Error(err)))
 })
 //Edit Farm FORM (POST)
-router.post('/myfarm/:id/edit', CDNupload.single('farmImg'), (req, res) => {
+router.post('/myfarm/:id/edit', ensureAuthenticated, CDNupload.single('farmImg'), (req, res) => {
 
     const farmId = req.params.id
     const farmImage = {
@@ -167,36 +156,33 @@ router.post('/myfarm/:id/edit', CDNupload.single('farmImg'), (req, res) => {
     Farm
         .findByIdAndUpdate(farmId, { farmname, description, address, location, farmImg: farmImage })
         .then(() => res.redirect('/profile'))
-        .catch(err => console.log(err))
-})
+        .catch(err => next(new Error(err)))})
 
 //Edit Farm FORM (GET) 
-router.get('/myfarm/:id/delete', (req, res) => {
+router.get('/myfarm/:id/delete', ensureAuthenticated, (req, res) => {
     const farmId = req.params.id
     Farm
         .findByIdAndDelete(farmId)
         .then(() => res.redirect('/profile'))
-        .catch(err => console.log(err))
-
+        .catch(err => next(new Error(err)))
 })
 
 
 
 //EDIT Product FORM(GET)
-router.get('/myfarm/:id/edit-product', (req, res, next) => {
+router.get('/myfarm/:id/edit-product', ensureAuthenticated, (req, res, next) => {
     const farmId = req.params.farm_id
     const productId = req.query.id
 
     Product
         .findById(productId)
         .then(productInfo => res.render('products/edit-product', productInfo))
-        .catch(err => console.log('Error:', err))
-
+        .catch(err => next(new Error(err)))
 })
 
 
 //EDIT Product FORM (POST)
-router.post('/myfarm/:id/edit-product', CDNupload.single('productImg'), (req, res, next) => {
+router.post('/myfarm/:id/edit-product', ensureAuthenticated, CDNupload.single('productImg'), (req, res, next) => {
     const farmId = req.params.id
     const productId = req.query.id
     const productImage = {
@@ -210,15 +196,13 @@ router.post('/myfarm/:id/edit-product', CDNupload.single('productImg'), (req, re
     Product
         .findByIdAndUpdate(productId, { name, description, productImg: productImage, price, stock })
         .then(() => res.redirect('/profile'))
-        .catch(err => console.log('Error:', err))
-
+        .catch(err => next(new Error(err)))
 })
 
 //DELETE Product FORM (GET)
-router.get('/myfarm/:id/delete-product', (req, res, next) => {
+router.get('/myfarm/:id/delete-product', ensureAuthenticated, (req, res, next) => {
     Product.findByIdAndDelete(req.query.id)
         .then(() => res.redirect('/profile'))
-        .catch(err => console.log('Error:', err))
-})
+        .catch(err => next(new Error(err)))})
 
 module.exports = router

@@ -33,14 +33,12 @@ router.get('/', (req, res, next) => {
 router.post('/', ensureAuthenticated, (req, res, next) => {
 
     const theUser = req.user
-    console.log(theUser)
     const list = theUser.favorites
     let newlist = [...list, req.query.id]
     User
         .findByIdAndUpdate(req.user.id, { favorites: newlist })
         .then(() => res.redirect('/farms'))
-        .catch(err=> console.log(err))
-
+        .catch(err => next(new Error(err)))
 })
 
 // Farm details

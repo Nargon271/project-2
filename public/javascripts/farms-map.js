@@ -22,7 +22,7 @@ function getFarmsFromAPI() {
             console.log(response.data)
             drawMarkers(response.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(new Error(err)))
 }
 
 

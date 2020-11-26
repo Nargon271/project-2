@@ -2,6 +2,7 @@ const { text } = require('body-parser')
 const express = require('express')
 const router = express.Router()
 
+
 const Farm = require('../models/farm.model')
 const Product = require('../models/products.model')
 
@@ -44,8 +45,7 @@ router.get('/:product_id', (req, res) => {
         .findById(productId)
         .populate('farm')
         .then(productInfo => { res.render('products/product-details', productInfo) })
-        .catch(err => console.log(err))
-
+        .catch(err => next(new Error(err)))
 })
 
 

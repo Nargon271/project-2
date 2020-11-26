@@ -9,7 +9,6 @@ router.get('/farms', (req, res, next) => {
     Farm
         .find()
         .then(farms => res.json(farms))
-        .catch(err => next(err))
-})
+        .catch(err => next(new Error(err)))})
 
 module.exports = router

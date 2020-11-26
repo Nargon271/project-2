@@ -36,8 +36,7 @@ router.post('/sign-up', (req, res) => {
                 .then(() => res.redirect('/'))
                 .catch(() => res.render("auth/signup-form", { errorMsg: "An error occured" }))
         })
-        .catch(err => console.log(err))
-})
+        .catch(err => next(new Error(err)))})
 
 //Log in
 router.get('/log-in', (req, res) => res.render('auth/login-form'))
