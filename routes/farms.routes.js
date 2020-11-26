@@ -12,22 +12,14 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 
 // Farms List
 router.get('/', (req, res, next) => {
-    if (req.query.search) {
-        const regex = new RegExp(escapeRegExp(req.query.search), 'gi')
 
-        Farm
-            .find({ farmname: regex },{farmname: 1, farmImg:1, user: 1})
-            .populate('user')
-            .then(allFarms => res.render('farms/farms-list', { allFarms }))
-            .catch(err => next(new Error(err)))
+    const query = req.query.search ? { farmname: new RegExp(escapeRegExp(req.query.search), 'gi') } : {}
 
-    } else {
-        Farm
-            .find({}, { farmname: 1, farmImg: 1, user: 1 })
-            .populate('user')
-            .then(allFarms => res.render('farms/farms-list', { allFarms }))
-            .catch(err => next(new Error(err)))
-    }
+    Farm
+        .find(query, { farmname: 1, farmImg: 1, user: 1 })
+        .populate('user')
+        .then(allFarms => res.render('farms/farms-list', { allFarms }))
+        .catch(err => next(new Error(err)))
 })
 
 router.post('/', ensureAuthenticated, (req, res, next) => {
@@ -42,7 +34,7 @@ router.post('/', ensureAuthenticated, (req, res, next) => {
 })
 
 // Farm details
-router.get('/:farm_id', (req, res) => {
+router.get('/:farm_id', (req, res, next) => {
 
     const farmId = req.params.farm_id
 

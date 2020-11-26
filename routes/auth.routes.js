@@ -12,7 +12,7 @@ const bcryptSalt = 10
 //Sign up
 router.get('/sign-up', (req, res) => res.render('auth/signup-form'))
 
-router.post('/sign-up', (req, res) => {
+router.post('/sign-up', (req, res, next) => {
     const { name, surname, username, email, password, role } = req.body
 
 

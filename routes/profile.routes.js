@@ -17,7 +17,7 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 const checkRole = admittedRoles => (req, res, next) => admittedRoles.includes(req.user.role) ? next() : res.render('auth/login-form', { errorMsg: 'Not authorized' })
 
 router.get('/log-out', (req, res) => req.session.destroy((err) => res.redirect("/")))
-router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res) => {
+router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (req, res, next) => {
     
     Promise.all([Farm.find({ user: req.user.id }).populate('user'), User.findById(req.user.id).populate('favorites')])
         .then(data => {
@@ -26,7 +26,7 @@ router.get('/', ensureAuthenticated, checkRole(['FARMER', 'BUYER', 'ADMIN']), (r
         .catch(err => next(new Error(err)))})
 
 //Create/Edit Farm FORM (GET) CHECKED
-router.get('/create-farm', ensureAuthenticated, (req, res) => {
+router.get('/create-farm', ensureAuthenticated, (req, res, next) => {
 
     const userId = req.query.id
 
@@ -37,7 +37,7 @@ router.get('/create-farm', ensureAuthenticated, (req, res) => {
         .catch(err => next(new Error(err)))
 })
 //Create/Edit Farm FORM (POST) CHECKED
-router.post('/create-farm', ensureAuthenticated, CDNupload.single('farmImg'), (req, res) => {
+router.post('/create-farm', ensureAuthenticated, CDNupload.single('farmImg'), (req, res, next) => {
 
     const userId = req.query.id
     const farmImage = {
@@ -60,7 +60,7 @@ router.post('/create-farm', ensureAuthenticated, CDNupload.single('farmImg'), (r
 
 
 //Edit User FORM (GET)
-router.get('/edit-user', ensureAuthenticated, (req, res) => {
+router.get('/edit-user', ensureAuthenticated, (req, res, next) => {
 
     const userId = req.query.id
 
@@ -70,7 +70,7 @@ router.get('/edit-user', ensureAuthenticated, (req, res) => {
         .catch(err => next(new Error(err)))
 })
 //Edit User FORM (POST)
-router.post('/edit-user', ensureAuthenticated, CDNupload.single('profileImg'), (req, res) => {
+router.post('/edit-user', ensureAuthenticated, CDNupload.single('profileImg'), (req, res, next) => {
 
     const userId = req.query.id
     const profileImage = {
@@ -88,7 +88,7 @@ router.post('/edit-user', ensureAuthenticated, CDNupload.single('profileImg'), (
 
 
 //SHOW FARM data
-router.get('/myfarm/:id', ensureAuthenticated, (req, res) => {
+router.get('/myfarm/:id', ensureAuthenticated, (req, res, next) => {
     const farmId = req.params.id
     Promise.all([Farm.findById(farmId).populate('user'), Product.find({ farm: req.params.id }).populate('farm')])
         .then(data => {
@@ -98,7 +98,7 @@ router.get('/myfarm/:id', ensureAuthenticated, (req, res) => {
 })
 
 //CREATE Product FORM (GET)
-router.get('/myfarm/:id/create-product', ensureAuthenticated, (req, res) => {
+router.get('/myfarm/:id/create-product', ensureAuthenticated, (req, res, next) => {
     const farmId = req.params.id
 
     Farm
@@ -127,7 +127,7 @@ router.post('/myfarm/:id/create-product', ensureAuthenticated, CDNupload.single(
 
 
 //Edit Farm FORM (GET) 
-router.get('/myfarm/:id/edit', ensureAuthenticated, (req, res) => {
+router.get('/myfarm/:id/edit', ensureAuthenticated, (req, res, next) => {
 
     const farmId = req.params.id
 
@@ -138,7 +138,7 @@ router.get('/myfarm/:id/edit', ensureAuthenticated, (req, res) => {
         .catch(err => next(new Error(err)))
 })
 //Edit Farm FORM (POST)
-router.post('/myfarm/:id/edit', ensureAuthenticated, CDNupload.single('farmImg'), (req, res) => {
+router.post('/myfarm/:id/edit', ensureAuthenticated, CDNupload.single('farmImg'), (req, res, next) => {
 
     const farmId = req.params.id
     const farmImage = {
@@ -159,7 +159,7 @@ router.post('/myfarm/:id/edit', ensureAuthenticated, CDNupload.single('farmImg')
         .catch(err => next(new Error(err)))})
 
 //Edit Farm FORM (GET) 
-router.get('/myfarm/:id/delete', ensureAuthenticated, (req, res) => {
+router.get('/myfarm/:id/delete', ensureAuthenticated, (req, res, next) => {
     const farmId = req.params.id
     Farm
         .findByIdAndDelete(farmId)
