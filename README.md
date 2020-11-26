@@ -70,4 +70,4 @@ Here's the route we will be using:
 
 ## That's it!
 
-Enjoy your local products and stay healty! :heart:
+Enjoy your local products and stay healthy! :heart:
