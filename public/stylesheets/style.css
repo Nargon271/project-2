@@ -54,14 +54,55 @@ h1{
 
 /* Home */
 
-#farmsMap{
-  height: 450px;
-  background-color: rgb(2, 68, 2);
+.glide__track {
+  margin-bottom: 0px;
+  
 }
 
+#farmsMap{
+  height: 450px;
+  background-color: #e4caa0;
+}
+.farms-map{
+padding-top:20px;
+}
+
+.farms-map h2{
+  font-family: 'Rock Salt', cursive;
+  margin: 50px 0px;
+}
+
+/* community */
+.community h2{
+    font-family: 'Rock Salt', cursive;
+}
+
+/* collect */
+.collect{
+  padding-top: 40px; 
+}
+
+.collect h2{
+  font-family: 'Rock Salt', cursive;
+}
 /* How it works section */
 .account-icon{
-  width:80px;
+  width:100px;
+}
+.register-icon{
+  width:120px;
+}
+.how-work{
+  font-family: 'Rock Salt', cursive;
+}
+
+.how-it-works{
+  background-color: #fff;
+  padding: 30px 0px 40px ;
+}
+
+.how-it-works h3{
+  font-size: 1.4em;
 }
 
 .form-search{
