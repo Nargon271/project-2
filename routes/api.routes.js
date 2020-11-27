@@ -7,8 +7,9 @@ const Farm = require('../models/farm.model')
 router.get('/farms', (req, res, next) => {
 
     Farm
-        .find({} , { location: 1 })
+        .find({}, { farmname: 1, location: 1 })
         .then(farms => res.json(farms))
-        .catch(err => next(new Error(err)))})
+        .catch(err => next(new Error(err)))
+})
 
 module.exports = router

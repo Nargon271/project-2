@@ -50,6 +50,16 @@ h1{
 
 .card{
   background-color: #fff;
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .card-detail{
@@ -205,6 +215,7 @@ font-size:1.5em;
 /* .farm-details{
   height: 85vh;
 } */
+
 .btn-fav{
   background-color:#fff;
   border:1px solid #b21e35;
@@ -271,9 +282,9 @@ font-size:1.5em;
 
 /*Create Farm*/
 
-/* .create-farm{
+ .create-farm{
   height:81vh;
-} */
+} 
 
 /*Create Product*/
 

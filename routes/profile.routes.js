@@ -12,18 +12,20 @@ const CDNupload = require('./../configs/cdn-upload.config')
 // Middlewares
 const ensureAuthenticated = require('./../configs/custom.middleware')
 
+// Utils
+const checkRole = require('./../utils/role-hbs-checker.utils')
 
 // Endpoints
 router.get('/log-out', (req, res) => req.session.destroy((err) => res.redirect("/")))
 
 
 router.get('/', ensureAuthenticated, (req, res, next) => {
-    
+
     const farmPromise = Farm.find({ user: req.user.id }).populate('user')
     const userPromise = User.findById(req.user.id).populate('favorites')
-    
+
     Promise.all([farmPromise, userPromise])
-        .then(data => res.render('profiles/profile', { allFarms: data[0], user: req.user, isFarmer: req.user.role.includes('FARMER'), isBuyer: req.user.role.includes('BUYER'), userInfo: data[1].favorites }))
+        .then(data => res.render('profiles/profile', { allFarms: data[0], user: checkRole.user(req), isFarmer: checkRole.isFarmer(req), isBuyer: checkRole.isBuyer(req), userInfo: data[1].favorites }))
         .catch(err => next(new Error(err)))
 })
 
@@ -96,11 +98,11 @@ router.post('/edit-user', ensureAuthenticated, CDNupload.single('profileImg'), (
 
 // Show farm data
 router.get('/myfarm/:id', ensureAuthenticated, (req, res, next) => {
-    
+
     const farmId = req.params.id
     const farmPromise = Farm.findById(farmId).populate('user')
     const productPromise = Product.find({ farm: req.params.id }).populate('farm')
-    
+
     Promise.all([farmPromise, productPromise])
         .then(data => res.render('profiles/myfarm', { farmInfo: data[0], allProducts: data[1] }))
         .catch(err => next(new Error(err)))
@@ -109,7 +111,7 @@ router.get('/myfarm/:id', ensureAuthenticated, (req, res, next) => {
 
 // Create Product FORM (GET)
 router.get('/myfarm/:id/create-product', ensureAuthenticated, (req, res, next) => {
-    
+
     const farmId = req.params.id
 
     Farm
@@ -122,7 +124,7 @@ router.get('/myfarm/:id/create-product', ensureAuthenticated, (req, res, next) =
 
 // Create Product FORM (POST)
 router.post('/myfarm/:id/create-product', ensureAuthenticated, CDNupload.single('productImg'), (req, res, next) => {
-    
+
     const { name, description, price, stock } = req.body
     const farmId = req.params.id
     const productImage = {
@@ -174,9 +176,9 @@ router.post('/myfarm/:id/edit', ensureAuthenticated, CDNupload.single('farmImg')
 
 // Edit Farm FORM (GET) 
 router.get('/myfarm/:id/delete', ensureAuthenticated, (req, res, next) => {
-   
+
     const farmId = req.params.id
-    
+
     Farm
         .findByIdAndDelete(farmId)
         .then(() => res.redirect('/profile'))
@@ -186,7 +188,7 @@ router.get('/myfarm/:id/delete', ensureAuthenticated, (req, res, next) => {
 
 // Edit Product FORM(GET)
 router.get('/myfarm/:id/edit-product', ensureAuthenticated, (req, res, next) => {
-    
+
     const productId = req.query.id
 
     Product
@@ -198,7 +200,7 @@ router.get('/myfarm/:id/edit-product', ensureAuthenticated, (req, res, next) => 
 
 // Edit Product FORM (POST)
 router.post('/myfarm/:id/edit-product', ensureAuthenticated, CDNupload.single('productImg'), (req, res, next) => {
-    
+
     const productId = req.query.id
     const productImage = {
         imageName: req.body.imageName,
@@ -216,9 +218,10 @@ router.post('/myfarm/:id/edit-product', ensureAuthenticated, CDNupload.single('p
 
 //DELETE Product FORM (GET)
 router.get('/myfarm/:id/delete-product', ensureAuthenticated, (req, res, next) => {
-    
+
     Product.findByIdAndDelete(req.query.id)
         .then(() => res.redirect('/profile'))
-        .catch(err => next(new Error(err)))})
+        .catch(err => next(new Error(err)))
+})
 
 module.exports = router
