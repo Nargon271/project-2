@@ -216,7 +216,7 @@ router.post('/myfarm/:id/edit-product', ensureAuthenticated, CDNupload.single('p
         .catch(err => next(new Error(err)))
 })
 
-//DELETE Product FORM (GET)
+// Delete Product FORM (GET)
 router.get('/myfarm/:id/delete-product', ensureAuthenticated, (req, res, next) => {
 
     Product.findByIdAndDelete(req.query.id)
