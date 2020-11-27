@@ -50,6 +50,15 @@ h1{
 
 .card{
   background-color: #fff;
+  opacity: 0;
+    transition-property: all;
+    transition-duration: 1s;
+    transform: translateY(40px);
+}
+
+.card.visible{
+  transform: translateY(0);
+    opacity: 1;
 }
 
 .card-detail{
@@ -106,6 +115,31 @@ padding-top:30px;
 .how-it-works{
   background-color: #fff;
   padding: 30px 0px 40px ;
+  
+}
+
+.left{
+opacity: 0;
+    transition-property: all;
+    transition-duration: 1s;
+    transform: translateX(-80px);
+}
+
+.left.visible{
+transform: translateX(0);
+opacity: 1;
+}
+
+.right{
+opacity: 0;
+    transition-property: all;
+    transition-duration: 1s;
+    transform: translateX(80px);
+}
+
+.right.visible{
+transform: translateX(0);
+opacity: 1;
 }
 
 .how-it-works h3{
@@ -147,9 +181,6 @@ padding-top:30px;
 
 /* Products */
 
-.product-list{
-
-}
 
 .product-list-h1{
   color: #726953;
@@ -293,7 +324,6 @@ font-size:1.5em;
 
 /* MY FARM */
 
-.my-farm{}
 
 /* FOOTER */
 footer{
