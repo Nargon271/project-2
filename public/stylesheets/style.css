@@ -181,9 +181,6 @@ opacity: 1;
 
 /* Products */
 
-.product-list{
-
-}
 
 .product-list-h1{
   color: #726953;
@@ -239,6 +236,7 @@ font-size:1.5em;
 /* .farm-details{
   height: 85vh;
 } */
+
 .btn-fav{
   background-color:#fff;
   border:1px solid #b21e35;
@@ -305,9 +303,9 @@ font-size:1.5em;
 
 /*Create Farm*/
 
-/* .create-farm{
+ .create-farm{
   height:81vh;
-} */
+} 
 
 /*Create Product*/
 
@@ -327,7 +325,6 @@ font-size:1.5em;
 
 /* MY FARM */
 
-.my-farm{}
 
 /* FOOTER */
 footer{
