@@ -50,7 +50,7 @@ h1{
 
 .card{
   background-color: #fff;
-  opacity: 0;
+  opacity: 1;
     transition-property: all;
     transition-duration: 1s;
     transform: translateY(40px);
@@ -122,7 +122,7 @@ padding-top:30px;
 opacity: 0;
     transition-property: all;
     transition-duration: 1s;
-    transform: translateX(-80px);
+    transform: translateX(-10px);
 }
 
 .left.visible{
@@ -134,7 +134,7 @@ opacity: 1;
 opacity: 0;
     transition-property: all;
     transition-duration: 1s;
-    transform: translateX(80px);
+    transform: translateX(10px);
 }
 
 .right.visible{
