@@ -1,8 +1,8 @@
 ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# BEE FARM - IronHack Web Dev Bootcamp - Project 2
+# BEE FARM 
 
-Web App to connect local farmers to buyers directly
+Ironhack Web Development Bootcamp 6th week project: Web App to connect local farmers to buyers directly
 
 ## Introduction
 BEE-FARM is a free web application which is targeted for agriculture practitioners, which provides a platform to connect and bring together the farming community and to help them in selling, buying and exchanging agriculture commodities and services locally without middlemen through an Add/listing which they can post right from the webpage.
